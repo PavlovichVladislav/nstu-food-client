@@ -1,18 +1,18 @@
-import styles from "./Header.module.scss";
+import s from "./Header.module.scss";
 import logo from "../../assets/icons/logo.png";
 
 const Header = () => {
    return (
-      <header className={styles.header}>
-            <a href="/">
-               <div className={styles.headerLogo}>
-                  <img src={logo} alt="logo" />
-                  <div className={styles.headerDescr}>
-                     <h1 className={styles.headerTitle}>Хрустящий кампус</h1>
-                     <div className={styles.headerSubtitle}>лучшая еда для лучших студентов</div>
-                  </div>
+      <header className={s.header}>
+         <a href="/">
+            <div className={s.headerLogo}>
+               <img src={logo} alt="logo" />
+               <div className={s.headerDescr}>
+                  <h1 className={s.headerTitle}>Хрустящий кампус</h1>
+                  <div className={s.headerSubtitle}>лучшая еда для лучших студентов</div>
                </div>
-            </a>
+            </div>
+         </a>
       </header>
    );
 };

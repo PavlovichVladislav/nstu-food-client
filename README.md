@@ -1,6 +1,7 @@
-crispy campus client
-React
-Typescript
-Redux
-React 
-React router v6
+crispy campus client :
+- React
+- Typescript
+- Redux
+- React 
+- React router v6
+- scss

@@ -1,0 +1,31 @@
+@import '../../scss/variables';
+
+.categories {
+    ul {
+        display: flex;
+        gap: 9px;
+
+        li {
+            padding: 14px 32px;
+            background: $green;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 19px;
+            text-align: center;
+            letter-spacing: 0.015em;
+            color: $greenText;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+
+            &:hover {
+                background-color: darken($greenHover, 2%);
+            }
+
+            &.active {
+                background: $greenActive;
+                color: $white;
+            }
+        }
+    }
+}

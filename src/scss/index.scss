@@ -13,6 +13,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    list-style: none;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -25,6 +26,7 @@ h1 {
 }
 
 .wrapper {
+    padding-bottom: 96px;
     width: calc(100vw - 100px);
     height: 100%;
     background-color: $white;
@@ -36,4 +38,8 @@ h1 {
 .container {
     padding: 0 68px;
     // width: $container-width;
+}
+
+.content__top {
+    margin-top: 40px;
 }

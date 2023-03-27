@@ -11,7 +11,7 @@ const Categories = () => {
       <div className={s.categories}>
          <ul>
             {categories.map((categoryName, i) => (
-                <li className={i === 0 ? `${s.active}` : ''}>{categoryName}</li>
+                <li key={i} className={i === 0 ? `${s.active}` : ''}>{categoryName}</li>
             ))}
          </ul>
       </div>

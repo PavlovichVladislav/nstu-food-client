@@ -13,7 +13,14 @@ function App() {
             <section className="content__top">
                <Categories />
             </section>
-            <Card/>
+            <h2 className="content__title">Наши заведения</h2>
+            <div className="content__items">
+               <Card />
+               <Card />
+               <Card />
+               <Card />
+               <Card />
+            </div>
          </div>
       </div>
    );

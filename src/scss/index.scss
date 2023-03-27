@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: "Roboto";
-    src: 
+    src:
         url("../assets/fonts/Roboto-Bold.ttf") format("truetype"),
         url("../assets/fonts/Roboto-Regular.ttf") format("truetype"),
         url("../assets/fonts/Roboto-Black.ttf") format("truetype");
@@ -40,6 +40,26 @@ h1 {
     // width: $container-width;
 }
 
-.content__top {
-    margin-top: 40px;
+.content {
+    &__top {
+        margin-top: 40px;
+    }
+
+    &__title {
+        margin-top: 32px;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 39px;
+        letter-spacing: 0.01em;
+        color: $black;
+    }
+
+    &__items {
+        margin-top: 32px;
+        display: grid;
+        column-gap: 35px;
+        row-gap: 65px;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+    }
 }

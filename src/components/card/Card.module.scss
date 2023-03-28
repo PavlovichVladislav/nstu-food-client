@@ -2,7 +2,7 @@
 
 .cardWrapper {
    width: 280px;
-   height: 460px;
+   min-height: 456px;
    transition: all 0.1s ease-in-out;
 
    &:hover {
@@ -34,7 +34,7 @@
       justify-content: space-between;
       align-items: center;
       width: 280px;
-      height: 85px;
+      min-height: 115px;
       background: #f3f3f3;
       border-radius: 10px;
    }
@@ -53,17 +53,30 @@
       color: #2c2c2c;
    }
 
-   button {
+   .rating {
+      display: flex;
+
+      img {
+         width: 14px;
+         height: 14px;
+      }
+   }
+
+   a {
       margin-top: 13px;
+      padding: 12px 0; 
       width: 280px;
       height: 40px;
+      display: block;
       background: #dd1035;
       border: 1px solid #871c32;
       border-radius: 30px;
       font-weight: 700;
       font-size: 13px;
-      line-height: 15px;
+      line-height: 16px;
       color: #ffffff;
+      text-align: center;
+      text-decoration: none;
       cursor: pointer;
    }
 }

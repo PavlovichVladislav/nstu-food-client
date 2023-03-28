@@ -13,6 +13,10 @@ const Header = () => {
                </div>
             </div>
          </a>
+         <div className={s.headerButtons}>
+            <button>Вход</button>
+            <button className={s.light}>Регистрация</button>
+         </div>
       </header>
    );
 };

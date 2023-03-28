@@ -1,5 +1,7 @@
 import s from "./Card.module.scss";
 import restaurant from "../../assets/images/restaurant1.jpg";
+import rate from "../../assets/icons/rate.svg";
+import response from "../../assets/icons/response.svg";
 
 const Card = () => {
    return (
@@ -9,8 +11,12 @@ const Card = () => {
          <div className={s.descr}>
             <div>Проспект Карла Маркса, 20, к1 </div>
             <div>3й этаж, слева от главной лестницы </div>
+            <div className={s.rating}>
+               <div className="rate"> <img src={rate} alt="rate"/> 4,5/5</div>
+               <div className="responses"> <img src={response} alt="responses"/> 20 отзывов</div>
+            </div>
          </div>
-         <button>Пн-сб с 08:00 до 19:00</button>
+         <a href="#">Пн-сб с 08:00 до 19:00</a>
       </div>
    );
 };

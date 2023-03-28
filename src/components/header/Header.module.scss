@@ -3,7 +3,10 @@
 .header {
     border-bottom: 1px solid $gray-line;
     padding: 40px 0;
-    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     a {
         text-decoration: none;
     }
@@ -36,6 +39,36 @@
         font-size: 16px;
         line-height: 19px;
         color: $subtitleGray;
+    }
+
+    &Buttons {
+        display: flex;
+        gap: 10px;
+
+        button {
+            width: 133px;
+            height: 46px;
+            background: $greenActive;
+            border-radius: 30px;
+            border: none;
+
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 19px;
+            text-align: center;
+            color: #FFFFFF;
+            cursor: pointer;
+
+            &:hover {
+                background-color: darken($greenHover, 2%);
+                color: $white;
+            }
+
+            // &.light {
+            //     background: $green;
+            //     color: $white;
+            // }
+        }
     }
 
 }

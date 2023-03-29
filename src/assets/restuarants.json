@@ -1,0 +1,38 @@
+[
+    {
+        "id": 0,
+        "imageUrl": "https://grandhotelrodina.ru/upload/resize_cache/uf/ef2/992_600_2/ef2f7da069bcbc7eab510bd2b5572334.jpg",
+        "name": "Под яблоком Ньютона",
+        "address": "Проспект Карла Маркса, 20, к1",
+        "location": "3й этаж, слева от главной лестницы",
+        "rate": 4.5,
+        "reviews": 20
+    },
+    {
+        "id": 1,
+        "imageUrl": "https://img.restoclub.ru/uploads/search/d/f/9/f/df9f9844b0407a471f54cfdf4582a083_w470.jpg",
+        "name": "Под яблоком Ньютона",
+        "address": "Проспект Карла Маркса, 20, к1",
+        "location": "3й этаж, слева от главной лестницы",
+        "rate": 4.5,
+        "reviews": 20
+    },
+    {
+        "id": 2,
+        "imageUrl": "https://ksonline.ru/wp-content/uploads/2022/10/075.jpg",
+        "name": "Под яблоком Ньютона",
+        "address": "Проспект Карла Маркса, 20, к1",
+        "location": "3й этаж, слева от главной лестницы",
+        "rate": 4.5,
+        "reviews": 20
+    },
+    {
+        "id": 3,
+        "imageUrl": "https://gurmantur.com/wp-content/uploads/2018/04/restorant-wien-360x242.jpg",
+        "name": "Под яблоком Ньютона",
+        "address": "Проспект Карла Маркса, 20, к1",
+        "location": "3й этаж, слева от главной лестницы",
+        "rate": 4.5,
+        "reviews": 20
+    }
+]

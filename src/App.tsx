@@ -1,5 +1,6 @@
 import Header from "./components/header/Header";
 import Categories from "./components/categories/Categories";
+import restuarants from "./assets/restuarants.json";
 
 import "normalize.css";
 import "./scss/index.scss";
@@ -13,13 +14,11 @@ function App() {
             <section className="content__top">
                <Categories />
             </section>
-            <h2 className="content__title">Наши заведения</h2>
+            <h2 className="content__title"> Наши заведения</h2>
             <div className="content__items">
-               <Card />
-               <Card />
-               <Card />
-               <Card />
-               <Card />
+               {restuarants.map((restuarant) => (
+                  <Card key={restuarant.id} restaurant={restuarant} />
+               ))}
             </div>
          </div>
       </div>

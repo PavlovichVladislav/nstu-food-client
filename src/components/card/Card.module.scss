@@ -1,15 +1,45 @@
 @import "../../scss/variables";
 
-.cardWrapper {
-   width: 280px;
-   min-height: 456px;
-   transition: all 0.1s ease-in-out;
-
-   &:hover {
-      transform: scale(1.01);
+.card {
+   &Wrapper {
+      width: 280px;
+      min-height: 456px;
+      transition: all 0.1s ease-in-out;
+   
+      &:hover {
+         transform: scale(1.01);
+      }
+   
+      h2 {
+         margin-top: 16px;
+         font-weight: 800;
+         font-size: 20px;
+         line-height: 24px;
+         text-align: center;
+         letter-spacing: 0.01em;
+         color: $black;
+      }
+   
+      a {
+         margin-top: 13px;
+         padding: 12px 0;
+         width: 280px;
+         height: 40px;
+         display: block;
+         background: $red;
+         border: 1px solid $redBorder;
+         border-radius: 30px;
+         font-weight: 700;
+         font-size: 13px;
+         line-height: 16px;
+         color: $white;
+         text-align: center;
+         text-decoration: none;
+         cursor: pointer;
+      }
    }
 
-   img {
+   &Image {
       display: block;
       margin: 0 auto;
       width: 260px;
@@ -17,66 +47,53 @@
       border-radius: 8px;
    }
 
-   h2 {
-      margin-top: 16px;
-      font-weight: 800;
-      font-size: 20px;
-      line-height: 24px;
-      text-align: center;
-      letter-spacing: 0.01em;
-      color: $black;
-   }
-
-   .descr {
+   &Info {
+      padding: 5px;
       margin-top: 16px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
       width: 280px;
-      min-height: 115px;
+      min-height: 90px;
       background: #f3f3f3;
       border-radius: 10px;
+
+      &Item {
+         width: 100%;
+         padding: 5px 10px;
+         margin-bottom: 4px;
+         background: $white;
+         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+         border-radius: 5px;
+         font-weight: 700;
+         font-size: 14px;
+         line-height: 16px;
+         text-align: center;
+         letter-spacing: 0.015em;
+         color: $text;
+
+         &:last-child {
+            margin-bottom: 0px;
+         }
+      }
    }
 
-   div {
-      width: 100%;
-      padding: 5px 15px;
-      background: #ffffff;
-      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
-      border-radius: 5px;
-      font-weight: 700;
-      font-size: 14px;
-      line-height: 16px;
-      text-align: center;
-      letter-spacing: 0.015em;
-      color: #2c2c2c;
-   }
-
-   .rating {
+   &Rating {
       display: flex;
+      justify-content: center;
+      gap: 15px;
 
       img {
          width: 14px;
          height: 14px;
       }
-   }
 
-   a {
-      margin-top: 13px;
-      padding: 12px 0; 
-      width: 280px;
-      height: 40px;
-      display: block;
-      background: #dd1035;
-      border: 1px solid #871c32;
-      border-radius: 30px;
-      font-weight: 700;
-      font-size: 13px;
-      line-height: 16px;
-      color: #ffffff;
-      text-align: center;
-      text-decoration: none;
-      cursor: pointer;
+      .rate,
+      .reviews {
+         display: flex;
+         gap: 5px;
+         cursor: pointer;
+      }
    }
-}
+} 

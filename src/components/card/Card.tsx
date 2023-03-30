@@ -27,7 +27,7 @@ const Card: FC<CardProps> = ({ restaurant }) => {
                </div>
             </div>
          </div>
-         <a href="#">Пн-сб с 08:00 до 19:00</a>
+         <a href="/rest:id">Пн-сб с 08:00 до 19:00</a>
       </div>
    );
 };

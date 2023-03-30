@@ -41,12 +41,19 @@ h1 {
 }
 
 .content {
-    &__top {
+    &__categories {
         margin-top: 40px;
     }
 
-    &__title {
+    &__top {
         margin-top: 32px;
+        display: flex;
+        justify-content: space-between;
+        // align-items: center;
+    }
+
+    &__title {
+        // margin-top: 32px;
         font-weight: 700;
         font-size: 32px;
         line-height: 39px;

@@ -1,0 +1,81 @@
+@import '../../scss/variables';
+
+.sort {
+    &Wrapper {
+        position: relative;
+        cursor: pointer;
+        height: 17px;
+    }
+
+    &Popup {
+        padding: 13px 0;
+        position: absolute;
+        right: 0;
+        top: 20px;
+        width: 132px;
+        height: 136px;
+        z-index: 1;
+        background: $white;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+        border-radius: 10px;
+
+        div {
+            padding: 11px;
+            padding-left: 11px;
+            width: 132px;
+            height: 38px;
+            left: 1203px;
+            top: 274px;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+            letter-spacing: 0.015em;
+            color: $black;
+
+            &.active {
+                background: rgba(148, 26, 49, 0.15);
+                font-weight: 700;
+                font-size: 14px;
+                line-height: 17px;
+                letter-spacing: 0.015em;
+                color: #941A31;
+            }
+
+            &:hover {
+                background: rgba(148, 26, 49, 0.15);
+            }
+        }
+    }
+
+    &Label {
+        position: relative;
+        width: 210px;
+        display: flex;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 17px;
+        letter-spacing: 0.015em;
+        color: $text;
+
+        &::before {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            left: -15px;
+            background: url('../../assets/icons/triangle.svg') no-repeat;
+        }
+
+        span {
+            display: block;
+            margin-left: 5px;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+            letter-spacing: 0.015em;
+            color: $red;
+        }
+    }
+}

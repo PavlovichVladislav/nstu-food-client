@@ -28,11 +28,11 @@ h1 {
 .wrapper {
     padding-bottom: 96px;
     width: calc(100vw - 100px);
+    max-width: 1400px;
     height: 100%;
     background-color: $white;
     margin: 50px auto;
     border-radius: 10px;
-    max-width: 1400px;
 }
 
 .container {
@@ -49,11 +49,9 @@ h1 {
         margin-top: 32px;
         display: flex;
         justify-content: space-between;
-        // align-items: center;
     }
 
     &__title {
-        // margin-top: 32px;
         font-weight: 700;
         font-size: 32px;
         line-height: 39px;
@@ -64,9 +62,8 @@ h1 {
     &__items {
         margin-top: 32px;
         display: grid;
-        column-gap: 35px;
-        row-gap: 65px;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(1, 1fr);
+        align-items: center;
+        gap: 65px 35px;
+        grid-template: repeat(1, 1fr) / repeat(4, 1fr);
     }
 }

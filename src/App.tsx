@@ -8,13 +8,18 @@ import Sort from "./components/sort/Sort";
 import { useEffect, useState } from "react";
 import RestuarantApi from "./api/RestuarantApi";
 import { IRestuarant } from "./models/restuarant";
+import Skeleton from "./components/card/Skeleton";
 
 function App() {
    const [restuarants, setRestuarants] = useState<IRestuarant[]>([]);
+   const [isLoading, setIsLoading] = useState(true);
    const restuarantsApi = new RestuarantApi();
 
    useEffect(() => {
-      restuarantsApi.getAll().then(setRestuarants);
+      restuarantsApi.getAll().then((rests) => {
+         setRestuarants(rests);
+         setIsLoading(false);
+      });
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, []);
 
@@ -30,9 +35,11 @@ function App() {
                <Sort />
             </div>
             <div className="content__items">
-               {restuarants.map((restuarant) => (
-                  <Card key={restuarant.id} restaurant={restuarant} />
-               ))}
+               {isLoading
+                  ? [...new Array(8)].map((_, i) => <Skeleton key={i} />)
+                  : restuarants.map((restuarant) => (
+                       <Card key={restuarant.id} restaurant={restuarant} />
+                    ))}
             </div>
          </div>
       </div>

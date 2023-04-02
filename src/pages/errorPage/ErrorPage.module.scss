@@ -1,0 +1,14 @@
+@import url('../../scss/_variables.scss');
+
+.errorPage {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+
+    i {
+        color: #7B7B7B;
+    }
+}

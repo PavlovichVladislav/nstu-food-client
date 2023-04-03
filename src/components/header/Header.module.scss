@@ -64,6 +64,17 @@
                 color: $white;
             }
 
+            @media (max-width: 1355px) {
+                height: 43px;
+                width: 120px;
+            }
+
+            @media (max-width: 1150px) {
+                height: 40px;
+                width: 96px;
+                font-size: 14px;
+            }
+
             // &.light {
             //     background: $green;
             //     color: $white;
@@ -71,4 +82,18 @@
         }
     }
 
+    @media (max-width: 1150px) {
+        &Title {
+            font-size: 20px;
+        }
+    }
+
+    @media (max-width: 770px) {
+        flex-direction: column;
+        gap: 20px;
+
+        &Subtitle {
+            display: none;
+        }
+    }
 }

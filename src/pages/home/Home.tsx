@@ -6,7 +6,8 @@ import Skeleton from "../../components/card/Skeleton";
 import RestuarantApi from "../../api/RestuarantApi";
 import { IRestuarant } from "../../models/restuarant";
 
-export default function Home() {
+export default function 
+Home() {
    const [restuarants, setRestuarants] = useState<IRestuarant[]>([]);
    const [isLoading, setIsLoading] = useState(true);
    const restuarantsApi = new RestuarantApi();

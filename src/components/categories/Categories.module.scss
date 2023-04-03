@@ -10,6 +10,7 @@
             padding: 14px 32px;
             background: $green;
             border-radius: 30px;
+            min-width: 97px;
             font-weight: 700;
             font-size: 16px;
             line-height: 19px;
@@ -27,6 +28,24 @@
                 background: $greenActive;
                 color: $white;
             }
+
+            @media (max-width: 1600px) {
+                padding: 12px 26px;
+            }
+
+            @media (max-width: 1355px) {
+                padding: 12px 18px;
+                font-size: 14px;
+                max-height: 43px;
+            }
+        }
+
+        @media (max-width: 1150px) {
+            // flex-wrap: wrap;
+            // justify-content: start;
+            // gap: 10px;
+            width: 100%;
+            overflow: scroll;
         }
     }
 }

@@ -1,3 +1,4 @@
+import { IMenuItem } from "../models/menuItem";
 import { IRestuarant } from "../models/restuarant";
 
 class RestuarantApi {
@@ -12,10 +13,11 @@ class RestuarantApi {
       return response.json();
    }
 
-   // async getByCampus(campus: number): Promise<IRestuarant[]> {
-   //    const response = await fetch(`${this._baseApi}restuarants?campus=${campus}`);
-   //    return response.json();
-   // }
+   async getRestuarntMenu(id: number): Promise<IMenuItem[]> {
+      const response = await fetch(`${this._baseApi}restuarant_menu/${id}`);
+      return response.json().then(data => data.menu);
+   }
+
 }
 
 export default RestuarantApi;

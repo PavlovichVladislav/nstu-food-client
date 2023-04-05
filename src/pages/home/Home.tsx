@@ -7,6 +7,12 @@ import RestuarantApi from "../../api/RestuarantApi";
 import { IRestuarant } from "../../models/restuarant";
 
 export default function Home() {
+   const categories = ["Все"];
+
+   for (let i = 1; i <= 8; i++) {
+      categories.push(`Корпус ${i}`);
+   }
+
    const [restuarants, setRestuarants] = useState<IRestuarant[]>([]);
    const [campus, setCampus] = useState(0);
 
@@ -30,7 +36,7 @@ export default function Home() {
    return (
       <>
          <section className="content__categories">
-            <Categories campus={campus}  onClickCategory={setCampus} />
+            <Categories categories={categories} campus={campus} onClickCategory={setCampus} />
          </section>
          <div className="content__top">
             <h2 className="content__title"> Наши заведения</h2>

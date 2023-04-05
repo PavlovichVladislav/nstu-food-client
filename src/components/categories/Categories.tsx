@@ -1,18 +1,13 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import s from "./Categories.module.scss";
 
-const categories = ["Все"];
-
-for (let i = 1; i <= 8; i++) {
-   categories.push(`Корпус ${i}`);
-}
-
 interface Props {
+   categories: string[]
    onClickCategory: (category: number) => void;
    campus: number;
 } 
 
-const Categories: FC<Props> = ({ onClickCategory, campus }) => {
+const Categories: FC<Props> = ({ onClickCategory, campus, categories }) => {
    return (
       <div className={s.categories}>
          <ul>

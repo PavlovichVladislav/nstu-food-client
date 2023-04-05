@@ -3,6 +3,7 @@ import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./pages/errorPage/ErrorPage";
 import Home from "./pages/home/Home";
+import Restuarant from "./pages/restuarantPage/Restuarant";
 
 const router = createBrowserRouter([
    {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
         {
           path: "/",
           element: <Home />,
+        },
+        {
+          path: "/restuarant",
+          element: <Restuarant />,
         }
       ],
    },

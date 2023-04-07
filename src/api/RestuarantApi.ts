@@ -18,8 +18,25 @@ class RestuarantApi {
       return response.json();
    }
 
-   async getRestuarntMenu(id: string): Promise<getRestMenuRespone> {
-      const response = await fetch(`${this._baseApi}restuarant_menu/${id}`);
+   async getRestuarntMenu(id: string, sort: number | undefined): Promise<getRestMenuRespone> {
+      let params = "";
+
+      const sortValue = () => {
+         switch (sort) {
+            case 0:
+               return "rate";
+            case 1:
+               return "price";
+            case 2:
+               return "price";
+            default:
+               break;
+         }
+      };
+
+      if (sort) params = `sortBy=${sortValue()}`;
+
+      const response = await fetch(`${this._baseApi}restuarant_menu/${id}?${params}`);
       return response.json();
    }
 }

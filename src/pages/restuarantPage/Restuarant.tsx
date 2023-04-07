@@ -13,6 +13,7 @@ export default function Home() {
    const [menu, setMenu] = useState<IMenuItem[]>([]);
    const [restName, setRestName] = useState("");
    const [campus, setCampus] = useState(0);
+   const [sort, setSort] = useState(0);
    const [isLoading, setIsLoading] = useState(true);
    const { restId } = useParams();
 
@@ -21,7 +22,7 @@ export default function Home() {
    const getMenu = (id: string) => {
       setIsLoading(true);
 
-      restuarantsApi.getRestuarntMenu(id).then(({ menu, name }) => {
+      restuarantsApi.getRestuarntMenu(id, sort).then(({ menu, name }) => {
          setMenu(menu);
          setRestName(name);
          setIsLoading(false);
@@ -31,7 +32,7 @@ export default function Home() {
    useEffect(() => {
       if (restId) getMenu(restId);
       // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [campus]);
+   }, [campus, sort]);
 
    return (
       <>
@@ -40,7 +41,7 @@ export default function Home() {
          </section>
          <div className="content__top">
             <h2 className="content__title"> {restName}</h2>
-            <Sort />
+            <Sort sortValue={sort} onSortClick={setSort} />
          </div>
          <div className="content__items">
             {isLoading

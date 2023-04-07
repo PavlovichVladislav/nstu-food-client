@@ -1,27 +1,31 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import s from "./Sort.module.scss";
 
-const Sort = () => {
-   const sortValues = ["популярности", "цене", "алфавиту"];
+interface Props {
+   sortValue: number;
+   onSortClick: (valueNum: number) => void;
+}
+
+const Sort: FC<Props> = ({ onSortClick, sortValue }) => {
+   const sortValues = ["популярности", "цене(возр.)", "цене(убыв.)"];
    const [isOpen, setIsOpen] = useState(false);
-   const [activeIndex, setActiveIndex] = useState(0);
 
    const onSelectValue = (i: number) => {
-      setActiveIndex(i);
+      onSortClick(i);
       setIsOpen((acitve) => !acitve);
    };
 
    return (
       <div className={s.sortWrapper}>
          <div className={s.sortLabel} onClick={() => setIsOpen((acitve) => !acitve)}>
-            Сортировка по: <span>{sortValues[activeIndex]}</span>
+            Сортировка по: <span>{sortValues[sortValue]}</span>
          </div>
          {isOpen && (
             <div className={s.sortPopup}>
                {sortValues.map((value, i) => (
                   <div
                      key={i}
-                     className={i === activeIndex ? `${s.active}` : ""}
+                     className={i === sortValue ? `${s.active}` : ""}
                      onClick={() => onSelectValue(i)}
                   >
                      {value}

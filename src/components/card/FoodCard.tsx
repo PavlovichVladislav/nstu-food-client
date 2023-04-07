@@ -13,7 +13,7 @@ const FoodCard: FC<CardProps> = ({ product }) => {
       <div className={s.cardWrapper}>
          <img src={imageUrl} className={s.cardImage} alt="restaurant" />
          <h2>{name}</h2>
-         <a href="/rest:id">{price}</a>
+         <a href="/food:id" className={s.cardLink} >{price}/руб.</a>
       </div>
    );
 };

@@ -1,11 +1,16 @@
 import { IMenuItem } from "../models/menuItem";
 import { IRestuarant } from "../models/restuarant";
 
+interface getRestMenuRespone {
+   menu: IMenuItem[];
+   name: string;
+}
+
 class RestuarantApi {
    _baseApi = "https://6325f72270c3fa390f922d7b.mockapi.io/";
 
    async getRestuarants(campus?: number): Promise<IRestuarant[]> {
-      let params = '';
+      let params = "";
 
       if (campus) params = `campus=${campus}`;
 
@@ -13,11 +18,10 @@ class RestuarantApi {
       return response.json();
    }
 
-   async getRestuarntMenu(id: number): Promise<IMenuItem[]> {
+   async getRestuarntMenu(id: string): Promise<getRestMenuRespone> {
       const response = await fetch(`${this._baseApi}restuarant_menu/${id}`);
-      return response.json().then(data => data.menu);
+      return response.json();
    }
-
 }
 
 export default RestuarantApi;

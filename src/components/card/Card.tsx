@@ -1,19 +1,25 @@
+import { FC } from "react";
+import { Link, NavLink } from "react-router-dom";
+
+import { IRestuarant } from "../../models/restuarant";
+
 import s from "./Card.module.scss";
 import rateImg from "../../assets/icons/rate.svg";
 import reviewImg from "../../assets/icons/response.svg";
-import { FC } from "react";
-import { IRestuarant } from "../../models/restuarant";
 
 interface CardProps {
    restaurant: IRestuarant;
 }
 
 const Card: FC<CardProps> = ({ restaurant }) => {
-   const { address, imageUrl, location, name, rate, reviews } = restaurant;
+   const { id, address, imageUrl, location, name, rate, reviews } = restaurant;
 
    return (
       <div className={s.cardWrapper}>
-         <img src={imageUrl} className={s.cardImage} alt="restaurant" />
+         <Link to={`restuarant/${id}`}>
+            <img src={imageUrl} className={s.cardImage} alt="restaurant" />
+         </Link>
+
          <h2>{name}</h2>
          <div className={s.cardInfo}>
             <div className={s.cardInfoItem}> {address} </div>
@@ -27,7 +33,9 @@ const Card: FC<CardProps> = ({ restaurant }) => {
                </div>
             </div>
          </div>
-         <a href="/rest:id">Пн-сб с 08:00 до 19:00</a>
+         <NavLink className={s.cardLink} to={`restuarant/${id}`}>
+            Пн-сб с 08:00 до 19:00
+         </NavLink>
       </div>
    );
 };

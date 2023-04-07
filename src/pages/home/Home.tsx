@@ -40,13 +40,12 @@ export default function Home() {
          </section>
          <div className="content__top">
             <h2 className="content__title"> Наши заведения</h2>
-            {/* <Sort /> */}
          </div>
          <div className="content__items">
             {isLoading
                ? [...new Array(8)].map((_, i) => <Skeleton key={i} />)
                : restuarants.map((restuarant) => (
-                    <Card key={restuarant.id} restaurant={restuarant} />
+                    <Card restaurant={restuarant} key={restuarant.id} />
                  ))}
          </div>
       </>

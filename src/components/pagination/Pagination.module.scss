@@ -1,0 +1,35 @@
+@import '../../scss/variables';
+
+.paging {
+    padding-top: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 32px;
+    padding: 5px 12px;
+    color: $text;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.active,
+.link:hover,
+.link:focus {
+    border-radius: 50%;
+    background-color: $background;
+    outline: none;
+}
+
+.next {
+    border: none;
+    margin-left: 16px;
+    padding-right: 10px;
+  }
+  

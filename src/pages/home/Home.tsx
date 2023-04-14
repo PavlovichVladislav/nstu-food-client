@@ -5,16 +5,21 @@ import Card from "../../components/card/Card";
 import Skeleton from "../../components/card/Skeleton";
 import RestuarantApi from "../../api/RestuarantApi";
 import { IRestuarant } from "../../models/restuarant";
+import Paging from "../../components/pagination";
+import SearchPannel from "../../components/SearchPannel";
+import { useSearchParams } from "react-router-dom";
+
+const categories = ["Все"];
+
+for (let i = 1; i <= 8; i++) {
+   categories.push(`Корпус ${i}`);
+}
 
 export default function Home() {
-   const categories = ["Все"];
-
-   for (let i = 1; i <= 8; i++) {
-      categories.push(`Корпус ${i}`);
-   }
-
+   const [searchParams, updateSearchParams] = useSearchParams();
    const [restuarants, setRestuarants] = useState<IRestuarant[]>([]);
    const [campus, setCampus] = useState(0);
+   const page = Number(searchParams.get("page"));
 
    const [isLoading, setIsLoading] = useState(true);
    const restuarantsApi = new RestuarantApi();
@@ -22,7 +27,7 @@ export default function Home() {
    const getRestuarants = (campus?: number) => {
       setIsLoading(true);
 
-      restuarantsApi.getRestuarants(campus).then((rests) => {
+      restuarantsApi.getRestuarants(campus, page, 8).then((rests) => {
          setRestuarants(rests);
          setIsLoading(false);
       });
@@ -31,7 +36,7 @@ export default function Home() {
    useEffect(() => {
       getRestuarants(campus);
       // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [campus]);
+   }, [campus, page]);
 
    return (
       <>
@@ -40,6 +45,7 @@ export default function Home() {
          </section>
          <div className="content__top">
             <h2 className="content__title"> Наши заведения</h2>
+            {/* <SearchPannel/> */}
          </div>
          <div className="content__items">
             {isLoading
@@ -48,6 +54,7 @@ export default function Home() {
                     <Card restaurant={restuarant} key={restuarant.id} />
                  ))}
          </div>
+         <Paging totalPages={2} />
       </>
    );
 }

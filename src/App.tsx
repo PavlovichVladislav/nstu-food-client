@@ -11,7 +11,6 @@ function App() {
          <div className="container">
             <Header />
             <Outlet />
-            <Paging totalPages={5}/>
          </div>
       </div>
    );

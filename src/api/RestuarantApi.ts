@@ -9,12 +9,18 @@ interface getRestMenuRespone {
 class RestuarantApi {
    _baseApi = "https://6325f72270c3fa390f922d7b.mockapi.io/";
 
-   async getRestuarants(campus?: number, page: number = 1, limit: number = 8): Promise<IRestuarant[]> {
+   async getRestuarants(
+      campus?: number,
+      page: number = 1,
+      limit: number = 8,
+      searchValue?: string
+   ): Promise<IRestuarant[]> {
       let params = "";
 
       if (campus) params = `campus=${campus}`;
-      (page) ? params += `&page=${page}` : params += `&page=1`;
+      page ? (params += `&page=${page}`) : (params += `&page=1`);
       params += `&limit=${limit}`;
+      if (searchValue) params += `&search=${searchValue}`;
 
       const response = await fetch(`${this._baseApi}restuarants?${params}`);
       return response.json();

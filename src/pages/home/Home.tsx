@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Categories from "../../components/categories/Categories";
-// import Sort from "../../components/sort/Sort";
 import Card from "../../components/card/Card";
 import Skeleton from "../../components/card/Skeleton";
 import RestuarantApi from "../../api/RestuarantApi";
@@ -8,6 +7,7 @@ import { IRestuarant } from "../../models/restuarant";
 import Paging from "../../components/pagination";
 import SearchPannel from "../../components/SearchPannel";
 import { useSearchParams } from "react-router-dom";
+import { SearchContext } from "../../App";
 
 const categories = ["Все"];
 
@@ -21,13 +21,15 @@ export default function Home() {
    const [campus, setCampus] = useState(0);
    const page = Number(searchParams.get("page"));
 
+   const { search } = useContext(SearchContext);
+
    const [isLoading, setIsLoading] = useState(true);
    const restuarantsApi = new RestuarantApi();
 
    const getRestuarants = (campus?: number) => {
       setIsLoading(true);
 
-      restuarantsApi.getRestuarants(campus, page, 8).then((rests) => {
+      restuarantsApi.getRestuarants(campus, page, 8, search).then((rests) => {
          setRestuarants(rests);
          setIsLoading(false);
       });
@@ -36,7 +38,7 @@ export default function Home() {
    useEffect(() => {
       getRestuarants(campus);
       // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [campus, page]);
+   }, [campus, page, search]);
 
    return (
       <>
@@ -58,3 +60,5 @@ export default function Home() {
       </>
    );
 }
+
+

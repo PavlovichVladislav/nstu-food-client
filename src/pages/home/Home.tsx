@@ -8,6 +8,8 @@ import Paging from "../../components/pagination";
 import SearchPannel from "../../components/SearchPannel";
 import { useSearchParams } from "react-router-dom";
 import { SearchContext } from "../../App";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { setCampus } from "../../redux/slices/filterSlice";
 
 const categories = ["Все"];
 
@@ -18,7 +20,9 @@ for (let i = 1; i <= 8; i++) {
 export default function Home() {
    const [searchParams, updateSearchParams] = useSearchParams();
    const [restuarants, setRestuarants] = useState<IRestuarant[]>([]);
-   const [campus, setCampus] = useState(0);
+   const campus = useAppSelector((state) => state.filter.campus);
+   const dispatch = useAppDispatch();
+
    const page = Number(searchParams.get("page"));
 
    const { search } = useContext(SearchContext);
@@ -43,7 +47,7 @@ export default function Home() {
    return (
       <>
          <section className="content__categories">
-            <Categories categories={categories} campus={campus} onClickCategory={setCampus} />
+            <Categories categories={categories} campus={campus} onClickCategory={(campusNumber: number) => dispatch(setCampus(campusNumber))} />
          </section>
          <div className="content__top">
             <h2 className="content__title"> Наши заведения</h2>

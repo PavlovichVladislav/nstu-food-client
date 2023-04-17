@@ -1,27 +1,13 @@
 import { createRoot } from "react-dom/client";
-import App from "./App";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import ErrorPage from "./pages/errorPage/ErrorPage";
-import Home from "./pages/home/Home";
-import Restuarant from "./pages/restuarantPage/Restuarant";
+import { RouterProvider } from "react-router-dom";
 
-const router = createBrowserRouter([
-   {
-      path: "/",
-      element: <App/>,
-      errorElement: <ErrorPage />,
-      children: [
-        {
-          path: "/",
-          element: <Home />,
-        },
-        {
-          path: "/restuarant/:restId",
-          element: <Restuarant />,
-        }
-      ],
-   },
-]);
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
+import { router } from "./router/router";
 
 const root = createRoot(document.getElementById("root")!);
-root.render(<RouterProvider router={router}/>);
+root.render(
+   <Provider store={store}>
+      <RouterProvider router={router} />
+   </Provider>
+);

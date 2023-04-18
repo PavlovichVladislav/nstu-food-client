@@ -6,17 +6,23 @@ import Sort from "../../components/sort/Sort";
 import { IMenuItem } from "../../models/menuItem";
 import FoodCard from "../../components/card/FoodCard";
 import { useParams } from "react-router-dom";
-import { useAppSelector } from "../../hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { setDishCategory } from "../../redux/slices/sortDishesSlice";
 
 const types = ["Все", "Горячие блюда", "Десерты", "Быстрый перекус", "Напитки", "Десерты"];
 
 export default function Home() {
    const [menu, setMenu] = useState<IMenuItem[]>([]);
    const [restName, setRestName] = useState("");
-   const [dishNumber, setDishNumber] = useState(0);
-   const { sortProperty } = useAppSelector(state => state.dishes.sort);
    const [isLoading, setIsLoading] = useState(true);
    const { restId } = useParams();
+
+   const {
+      dishCategory,
+      sort: { sortProperty },
+   } = useAppSelector((state) => state.dishes);
+
+   const dispatch = useAppDispatch();
 
    const restuarantsApi = new RestuarantApi();
 
@@ -33,12 +39,16 @@ export default function Home() {
    useEffect(() => {
       if (restId) getMenu(restId);
       // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [dishNumber, sortProperty]);
+   }, [dishCategory, sortProperty]);
 
    return (
       <>
          <section className="content__categories">
-            <Categories categories={types} activeCategory={dishNumber} onClickCategory={setDishNumber} />
+            <Categories
+               categories={types}
+               activeCategory={dishCategory}
+               onClickCategory={(dishCategory: number) => dispatch(setDishCategory(dishCategory))}
+            />
          </section>
          <div className="content__top">
             <h2 className="content__title"> {restName}</h2>

@@ -1,24 +1,28 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState = {
-  sort: {
-    name: 'цене (возр.)',
-    sortProperty: 'priceAscending'
-  },
-}
+   dishCategory: 0,
+   sort: {
+      name: "цене (возр.)",
+      sortProperty: "priceAscending",
+   },
+};
 
 export type SortPropertyType = typeof initialState.sort;
 
 export const counterSlice = createSlice({
-  name: 'campus',
-  initialState,
-  reducers: {
-    setSortValue: (state, action: PayloadAction<SortPropertyType>) => {
-      state.sort = action.payload
-    },
-  },
-})
+   name: "campus",
+   initialState,
+   reducers: {
+      setSortValue: (state, action: PayloadAction<SortPropertyType>) => {
+         state.sort = action.payload;
+      },
+      setDishCategory: (state, action: PayloadAction<number>) => {
+         state.dishCategory = action.payload;
+      },
+   },
+});
 
-export const { setSortValue } = counterSlice.actions
+export const { setSortValue, setDishCategory } = counterSlice.actions;
 
-export default counterSlice.reducer
+export default counterSlice.reducer;

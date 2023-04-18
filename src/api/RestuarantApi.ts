@@ -26,16 +26,16 @@ class RestuarantApi {
       return response.json();
    }
 
-   async getRestuarntMenu(id: string, sort: number | undefined): Promise<getRestMenuRespone> {
+   async getRestuarntMenu(id: string, sort: string): Promise<getRestMenuRespone> {
       let params = "";
 
       const sortValue = () => {
          switch (sort) {
-            case 0:
+            case 'rating':
                return "rate";
-            case 1:
+            case 'priceAscending':
                return "price";
-            case 2:
+            case 'priceDescending':
                return "price";
             default:
                break;

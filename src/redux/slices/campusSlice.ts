@@ -5,7 +5,7 @@ const initialState = {
 }
 
 export const counterSlice = createSlice({
-  name: 'filter',
+  name: 'campus',
   initialState,
   reducers: {
     setCampus: (state, action: PayloadAction<number>) => {

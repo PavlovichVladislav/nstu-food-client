@@ -9,7 +9,7 @@ import SearchPannel from "../../components/SearchPannel";
 import { useSearchParams } from "react-router-dom";
 import { SearchContext } from "../../App";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { setCampus } from "../../redux/slices/filterSlice";
+import { setCampus } from "../../redux/slices/campusSlice";
 
 const categories = ["Все"];
 
@@ -47,7 +47,7 @@ export default function Home() {
    return (
       <>
          <section className="content__categories">
-            <Categories categories={categories} campus={campus} onClickCategory={(campusNumber: number) => dispatch(setCampus(campusNumber))} />
+            <Categories categories={categories} activeCategory={campus} onClickCategory={(campusNumber: number) => dispatch(setCampus(campusNumber))} />
          </section>
          <div className="content__top">
             <h2 className="content__title"> Наши заведения</h2>

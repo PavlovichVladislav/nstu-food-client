@@ -6,15 +6,20 @@ interface getRestMenuRespone {
    name: string;
 }
 
+interface getRestsResponse {
+   count: number;
+   rows: IRestuarant[];
+}
+
 class RestuarantApi {
-   _baseApi = "https://6325f72270c3fa390f922d7b.mockapi.io/";
+   _baseApi = "http://localhost:7000/api/";
 
    async getRestuarants(
       campus?: number,
       page: number = 1,
       limit: number = 8,
       searchValue?: string
-   ): Promise<IRestuarant[]> {
+   ): Promise<getRestsResponse> {
       let params = "";
 
       if (campus) params = `campus=${campus}`;
@@ -22,7 +27,7 @@ class RestuarantApi {
       params += `&limit=${limit}`;
       if (searchValue) params += `&search=${searchValue}`;
 
-      const response = await fetch(`${this._baseApi}restuarants?${params}`);
+      const response = await fetch(`${this._baseApi}restuarant?${params}`);
       return response.json();
    }
 

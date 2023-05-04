@@ -1,9 +1,10 @@
 export interface IRestuarant {
     id: number;
-    imageUrl: string;
+    img: string;
     name: string;
     address: string;
+    schedule: string;
     location: string;
-    rate: number;
-    reviews: number;
+    rating: number;
+    reviews: number;    
 }

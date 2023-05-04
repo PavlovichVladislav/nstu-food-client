@@ -34,7 +34,7 @@ export default function Home() {
       setIsLoading(true);
 
       restuarantsApi.getRestuarants(campus, page, 8, search).then((rests) => {
-         setRestuarants(rests);
+         setRestuarants(rests.rows);
          setIsLoading(false);
       });
    };

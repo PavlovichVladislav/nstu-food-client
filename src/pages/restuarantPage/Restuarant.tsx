@@ -1,17 +1,20 @@
 import { useEffect, useState } from "react";
-import Categories from "../../components/categories/Categories";
-import Skeleton from "../../components/card/Skeleton";
-import RestuarantApi from "../../api/RestuarantApi";
-import Sort from "../../components/sort/Sort";
-import { IMenuItem } from "../../models/menuItem";
-import FoodCard from "../../components/card/FoodCard";
 import { useParams } from "react-router-dom";
+
+import RestuarantApi from "../../api/RestuarantApi";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+
+import Categories from "../../components/categories/Categories";
+import Sort from "../../components/sort/Sort";
+import MenuItems from "../../components/menuItems/MenuItems";
+
 import { setDishCategory } from "../../redux/slices/sortDishesSlice";
+
+import { IMenuItem } from "../../models/menuItem";
 
 const types = ["Все", "Горячие блюда", "Десерты", "Быстрый перекус", "Напитки", "Десерты"];
 
-export default function Home() {
+export default function Restuarant() {
    const [menu, setMenu] = useState<IMenuItem[]>([]);
    const [restName, setRestName] = useState("");
    const [isLoading, setIsLoading] = useState(true);
@@ -26,14 +29,12 @@ export default function Home() {
 
    const restuarantsApi = new RestuarantApi();
 
-   const getMenu = (id: string) => {
+   const getMenu = async (id: string) => {
       setIsLoading(true);
 
-      restuarantsApi.getRestuarntMenu(id, sortProperty).then(({ menu, name }) => {
-         setMenu(menu);
-         setRestName(name);
-         setIsLoading(false);
-      });
+      const response = await restuarantsApi.getRestuarntMenu(id, sortProperty);
+      setMenu(response);
+      setIsLoading(false);
    };
 
    useEffect(() => {
@@ -54,11 +55,7 @@ export default function Home() {
             <h2 className="content__title"> {restName}</h2>
             <Sort />
          </div>
-         <div className="content__items">
-            {isLoading
-               ? [...new Array(8)].map((_, i) => <Skeleton key={i} />)
-               : menu.map((menu) => <FoodCard key={menu.id} product={menu} />)}
-         </div>
+         <MenuItems isLoading={isLoading} menu={menu} />
       </>
    );
 }

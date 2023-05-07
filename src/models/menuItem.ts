@@ -1,6 +1,6 @@
 export interface IMenuItem { 
     id: string;
-    imageUrl: string;
+    img: string;
     name: string;
     price: string;
 }

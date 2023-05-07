@@ -1,15 +1,18 @@
 import { useContext, useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+
+import RestuarantApi from "../../api/RestuarantApi";
+import { SearchContext } from "../../App";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+
+import { setCampus } from "../../redux/slices/campusSlice";
+
 import Categories from "../../components/categories/Categories";
 import Card from "../../components/card/Card";
 import Skeleton from "../../components/card/Skeleton";
-import RestuarantApi from "../../api/RestuarantApi";
-import { IRestuarant } from "../../models/restuarant";
 import Paging from "../../components/pagination";
-import SearchPannel from "../../components/SearchPannel";
-import { useSearchParams } from "react-router-dom";
-import { SearchContext } from "../../App";
-import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { setCampus } from "../../redux/slices/campusSlice";
+
+import { IRestuarant } from "../../models/restuarant";
 
 const categories = ["Все"];
 

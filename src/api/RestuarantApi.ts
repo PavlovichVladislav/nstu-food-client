@@ -1,10 +1,10 @@
 import { IMenuItem } from "../models/menuItem";
 import { IRestuarant } from "../models/restuarant";
 
-interface getRestMenuRespone {
-   menu: IMenuItem[];
-   name: string;
-}
+// interface getRestMenuRespone {
+//    menu: ;
+//    name: string;
+// }
 
 interface getRestsResponse {
    count: number;
@@ -31,25 +31,27 @@ class RestuarantApi {
       return response.json();
    }
 
-   async getRestuarntMenu(id: string, sort: string): Promise<getRestMenuRespone> {
+   async getRestuarntMenu(id: string, sort: string): Promise<IMenuItem[]> {
       let params = "";
 
-      const sortValue = () => {
-         switch (sort) {
-            case 'rating':
-               return "rate";
-            case 'priceAscending':
-               return "price";
-            case 'priceDescending':
-               return "price";
-            default:
-               break;
-         }
-      };
+      // const sortValue = () => {
+      //    switch (sort) {
+      //       case 'rating':
+      //          return "rate";
+      //       case 'priceAscending':
+      //          return "price";
+      //       case 'priceDescending':
+      //          return "price";
+      //       default:
+      //          break;
+      //    }
+      // };
 
-      if (sort) params = `sortBy=${sortValue()}`;
+      // if (sort) params = `sortBy=${sortValue()}`;
 
-      const response = await fetch(`${this._baseApi}restuarant_menu/${id}?${params}`);
+      const response = await fetch(`${this._baseApi}menu/${id}?${params}`);
+      // const items = await response.json();
+      // console.log(items);
       return response.json();
    }
 }

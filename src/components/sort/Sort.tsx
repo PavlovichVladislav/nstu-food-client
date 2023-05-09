@@ -18,6 +18,7 @@ const Sort: FC<Props> = () => {
    const sortProperty = useAppSelector((state) => state.dishes.sort);
    const [isOpen, setIsOpen] = useState(false);
    const dispatch = useAppDispatch();
+   
 
    const onSelectValue = (prop: SortPropertyType) => {
       dispatch(setSortValue(prop));

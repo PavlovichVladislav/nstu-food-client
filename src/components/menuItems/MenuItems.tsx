@@ -1,15 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams, useSearchParams } from "react-router-dom";
+
+import RestuarantApi from "../../api/RestuarantApi";
+
 import Skeleton from "../card/Skeleton";
 import FoodCard from "../card/FoodCard";
-import { IMenuItem } from "../../models/menuItem";
 import ItemsEmpty from "../itemsEmpty/ItemsEmpty";
 
-interface Props {
-   isLoading: boolean;
-   menu: IMenuItem[];
-}
+import { IMenuItem } from "../../models/menuItem";
 
-const MenuItems: React.FC<Props> = ({ isLoading, menu }) => {
+const MenuItems: React.FC = () => {
+   const [menu, setMenu] = useState<IMenuItem[]>([]);
+   const [isLoading, setIsLoading] = useState(true);
+   const restuarantsApi = new RestuarantApi();
+   const [searchParams] = useSearchParams();
+   const { restId } = useParams();
+
+   const dishCategory = searchParams.get('category');
+   const sortProperty = searchParams.get('sort');
+
+   const getMenu = async (id: string) => {
+      setIsLoading(true);
+
+      const response = await restuarantsApi.getRestuarntMenu(id, sortProperty || '');
+      setMenu(response);
+      setIsLoading(false);
+   };
+
+   useEffect(() => {
+      if (restId) getMenu(restId);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, [dishCategory, sortProperty]);
+
    if (isLoading) {
       return (
          <div className="content__items">
@@ -20,11 +42,14 @@ const MenuItems: React.FC<Props> = ({ isLoading, menu }) => {
       );
    }
 
-   if (menu.length) {
+   console.log(isLoading);
+   console.log('pre');
+
+   if (!isLoading && menu.length > 0) {
       return (
          <div className="content__items">
-            {menu.map((menu) => (
-               <FoodCard key={menu.id} product={menu} />
+            {menu.map((menuItem) => (
+               <FoodCard key={menuItem.id} product={menuItem} />
             ))}
          </div>
       );

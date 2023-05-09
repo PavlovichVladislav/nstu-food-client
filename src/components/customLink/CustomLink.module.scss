@@ -1,0 +1,19 @@
+@import "../../scss/variables";
+
+.link {
+    margin-top: 13px;
+    padding: 12px 0;
+    width: 280px;
+    height: 40px;
+    display: block;
+    background: $red;
+    border: 1px solid $redBorder;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 16px;
+    color: $white;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+ }

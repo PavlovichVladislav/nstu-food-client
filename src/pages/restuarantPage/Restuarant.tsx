@@ -15,32 +15,11 @@ import { IMenuItem } from "../../models/menuItem";
 const types = ["Все", "Горячие блюда", "Десерты", "Быстрый перекус", "Напитки", "Десерты"];
 
 export default function Restuarant() {
-   const [menu, setMenu] = useState<IMenuItem[]>([]);
    const [restName, setRestName] = useState("");
-   const [isLoading, setIsLoading] = useState(true);
-   const { restId } = useParams();
 
-   const {
-      dishCategory,
-      sort: { sortProperty },
-   } = useAppSelector((state) => state.dishes);
+   const { dishCategory } = useAppSelector((state) => state.dishes);
 
    const dispatch = useAppDispatch();
-
-   const restuarantsApi = new RestuarantApi();
-
-   const getMenu = async (id: string) => {
-      setIsLoading(true);
-
-      const response = await restuarantsApi.getRestuarntMenu(id, sortProperty);
-      setMenu(response);
-      setIsLoading(false);
-   };
-
-   useEffect(() => {
-      if (restId) getMenu(restId);
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [dishCategory, sortProperty]);
 
    return (
       <>
@@ -55,7 +34,7 @@ export default function Restuarant() {
             <h2 className="content__title"> {restName}</h2>
             <Sort />
          </div>
-         <MenuItems isLoading={isLoading} menu={menu} />
+         <MenuItems />
       </>
    );
 }

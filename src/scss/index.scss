@@ -30,7 +30,9 @@ h1 {
 }
 
 .wrapper {
-    padding-bottom: 48px;
+    display: grid;
+    grid-template-rows: auto auto auto 1fr;
+    padding: 0 68px 48px 68px;
     width: calc(100vw - 100px);
     max-width: 1400px;
     min-height: calc(100vh - 100px);
@@ -40,17 +42,10 @@ h1 {
 
     @media (max-width: 710px) {
         width: calc(100vw);
-        padding-bottom: 20px;
+        padding-bottom: 0 32px 20px 32px;
         margin: 0 auto;
         border-radius: 0;
-    } 
-}
-
-.container {
-    padding: 0 68px;
-    @media (max-width: 710px) {
-        padding: 0 32px;
-    } 
+    }
 }
 
 .content {
@@ -68,7 +63,7 @@ h1 {
             font-size: 24px;
             flex-direction: column;
             gap: 10px;
-        } 
+        }
     }
 
     &__title {
@@ -84,7 +79,7 @@ h1 {
 
         @media (max-width: 832px) {
             font-size: 24px;
-        } 
+        }
     }
 
     &__items {

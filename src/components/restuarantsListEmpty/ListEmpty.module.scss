@@ -1,0 +1,11 @@
+@import '../../scss/variables';
+
+.ListEmpty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 22px;
+    color: $text;
+    text-align: center;
+}

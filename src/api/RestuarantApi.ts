@@ -1,10 +1,10 @@
 import { IMenuItem } from "../models/menuItem";
 import { IRestuarant } from "../models/restuarant";
 
-// interface getRestMenuRespone {
-//    menu: ;
-//    name: string;
-// }
+interface getRestMenuRespone {
+   restuarantName: string;
+   dishes: IMenuItem[];
+}
 
 interface getRestsResponse {
    count: number;
@@ -31,7 +31,7 @@ class RestuarantApi {
       return response.json();
    }
 
-   async getRestuarntMenu(id: string, sort: string): Promise<IMenuItem[]> {
+   async getRestuarntMenu(id: string, sort: string): Promise<getRestMenuRespone> {
       let params = "";
 
       // const sortValue = () => {

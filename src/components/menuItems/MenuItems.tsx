@@ -12,18 +12,18 @@ import { IMenuItem } from "../../models/menuItem";
 const MenuItems: React.FC = () => {
    const [menu, setMenu] = useState<IMenuItem[]>([]);
    const [isLoading, setIsLoading] = useState(true);
-   const restuarantsApi = new RestuarantApi();
    const [searchParams] = useSearchParams();
    const { restId } = useParams();
 
+   const restuarantsApi = new RestuarantApi();
+   
    const dishCategory = searchParams.get('category');
    const sortProperty = searchParams.get('sort');
 
    const getMenu = async (id: string) => {
       setIsLoading(true);
-
-      const response = await restuarantsApi.getRestuarntMenu(id, sortProperty || '');
-      setMenu(response);
+      const { dishes } = await restuarantsApi.getRestuarntMenu(id, sortProperty || '');
+      setMenu(dishes);
       setIsLoading(false);
    };
 
@@ -41,9 +41,6 @@ const MenuItems: React.FC = () => {
          </div>
       );
    }
-
-   console.log(isLoading);
-   console.log('pre');
 
    if (!isLoading && menu.length > 0) {
       return (

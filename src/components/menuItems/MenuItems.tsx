@@ -9,21 +9,29 @@ import ItemsEmpty from "../itemsEmpty/ItemsEmpty";
 
 import { IMenuItem } from "../../models/menuItem";
 
-const MenuItems: React.FC = () => {
+interface Props {
+   onLoad: (restName: string) => void;
+}
+
+const MenuItems: React.FC<Props> = ({ onLoad }) => {
    const [menu, setMenu] = useState<IMenuItem[]>([]);
    const [isLoading, setIsLoading] = useState(true);
    const [searchParams] = useSearchParams();
    const { restId } = useParams();
 
    const restuarantsApi = new RestuarantApi();
-   
-   const dishCategory = searchParams.get('category');
-   const sortProperty = searchParams.get('sort');
+
+   const dishCategory = searchParams.get("category");
+   const sortProperty = searchParams.get("sort");
 
    const getMenu = async (id: string) => {
       setIsLoading(true);
-      const { dishes } = await restuarantsApi.getRestuarntMenu(id, sortProperty || '');
+      const { dishes, restuarantName } = await restuarantsApi.getRestuarntMenu(
+         id,
+         sortProperty || ""
+      );
       setMenu(dishes);
+      onLoad(restuarantName);
       setIsLoading(false);
    };
 

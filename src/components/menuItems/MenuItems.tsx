@@ -3,8 +3,8 @@ import { useParams, useSearchParams } from "react-router-dom";
 
 import RestuarantApi from "../../api/RestuarantApi";
 
-import Skeleton from "../card/Skeleton";
-import FoodCard from "../card/FoodCard";
+import Skeleton from "../cards/Skeleton";
+import FoodCard from "../cards/FoodCard";
 import ItemsEmpty from "../itemsEmpty/ItemsEmpty";
 
 import { IMenuItem } from "../../models/menuItem";

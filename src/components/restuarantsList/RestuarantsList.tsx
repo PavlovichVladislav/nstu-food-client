@@ -4,8 +4,8 @@ import { useSearchParams } from "react-router-dom";
 import RestuarantApi from "../../api/RestuarantApi";
 import { SearchContext } from "../../App";
 
-import Skeleton from "../card/Skeleton";
-import Card from "../card/Card";
+import Skeleton from "../cards/Skeleton";
+import Card from "../cards/RestuarantCard";
 import RestuarantsListEmpty from "../restuarantsListEmpty/RestuarantsListEmpty";
 
 import { IRestuarant } from "../../models/restuarant";

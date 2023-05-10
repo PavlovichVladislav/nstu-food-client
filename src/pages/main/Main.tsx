@@ -20,7 +20,7 @@ export default function Main() {
    return (
       <>
          <section className="content__categories">
-            <Categories categories={categories} categoryName={'campus'} />
+            <Categories categories={categories} paramName={'campus'} />
          </section>
          <div className="content__top">
             <h2 className="content__title"> Наши заведения</h2>

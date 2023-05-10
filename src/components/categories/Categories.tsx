@@ -4,13 +4,13 @@ import { useSearchParams } from "react-router-dom";
 
 interface Props {
    categories: string[];
-   categoryName: string;
+   paramName: string;
 }
 
-const Categories: FC<Props> = ({ categories, categoryName }) => {
+const Categories: FC<Props> = ({ categories, paramName }) => {
    const [searchParams, setSearchParams] = useSearchParams();
 
-   const categoryName1 = searchParams.get(categoryName) ? searchParams.get(categoryName) : 0;
+   const categoryName = searchParams.get(paramName) ? searchParams.get(paramName) as string : 0;
 
    return (
       <div className={s.categories}>
@@ -18,9 +18,9 @@ const Categories: FC<Props> = ({ categories, categoryName }) => {
             {categories.map((category, i) => (
                <li
                   key={i}
-                  className={categoryName1 === i ? `${s.active}` : ""}
+                  className={+categoryName === i ? `${s.active}` : ""}
                   onClick={() => {
-                     setSearchParams({ [categoryName]: `${i}` });
+                     setSearchParams({ [paramName]: `${i}` });
                   }}
                >
                   {category}

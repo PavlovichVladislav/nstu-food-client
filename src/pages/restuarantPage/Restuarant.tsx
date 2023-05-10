@@ -14,7 +14,7 @@ export default function Restuarant() {
          <section className="content__categories">
             <Categories
                categories={types}
-               categoryName="dishType"
+               paramName="dishType"
             />
          </section>
          <div className="content__top">

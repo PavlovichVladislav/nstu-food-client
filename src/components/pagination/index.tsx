@@ -39,7 +39,7 @@ const Paging: React.FC<PagingProps> = ({ totalPages, paramQueryName = "page" }) 
          ))}
          {currentPage < totalPages && (
             <button className={styles.next} onClick={() => onChangePage(currentPage + 1)}>
-               Дальше
+               Далее
             </button>
          )}
       </section>

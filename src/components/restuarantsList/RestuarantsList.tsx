@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import RestuarantApi from "../../api/RestuarantApi";
-import { SearchContext } from "../../App";
+import { useAppSelector } from "../../hooks/hooks";
 
 import Skeleton from "../cards/Skeleton";
 import Card from "../cards/RestuarantCard";
@@ -18,7 +18,7 @@ const RestuarantsList: React.FC<Props> = ({ onListLoad }) => {
    const [isLoading, setIsLoading] = useState(true);
    const [restuarants, setRestuarants] = useState<IRestuarant[]>([]);
    const [searchParams] = useSearchParams();
-   const { search } = useContext(SearchContext);
+   const { search } = useAppSelector(state => state.search);
 
    const page = searchParams.get("page") || 1;
    const campus = searchParams.get("campus");

@@ -1,31 +1,33 @@
-import React, { useContext, useRef, useCallback, useState } from "react";
-import debounse from "lodash.debounce";
-import styles from "./Search.module.scss";
-import { SearchContext } from "../../App";
+import React, { useRef, useCallback, useState } from "react";
 import debounce from "lodash.debounce";
+
+import { useAppDispatch } from "../../hooks/hooks";
+import { setSearchValue } from "../../redux/slices/searchSlice";
+
+import styles from "./Search.module.scss";
 
 const SearchPannel = () => {
    const [localValue, setLocalValue] = useState("");
-   const { changeSearch } = useContext(SearchContext);
    const inputRef = useRef<HTMLInputElement>(null);
+   const dispatch = useAppDispatch();
 
    const onClear = () => {
       inputRef.current?.focus();
       setLocalValue("");
-      changeSearch("");
+      dispatch(setSearchValue(""));
    };
 
    const updateGlobalSearchValue = useCallback(
       debounce((value: string) => {
-         changeSearch(value);
+         dispatch(setSearchValue(value));
       }, 250),
       []
    );
 
    const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setLocalValue(e.target.value);
-    updateGlobalSearchValue(e.target.value);
-   }
+      setLocalValue(e.target.value);
+      updateGlobalSearchValue(e.target.value);
+   };
 
    return (
       <div className={styles.searchWrapper}>

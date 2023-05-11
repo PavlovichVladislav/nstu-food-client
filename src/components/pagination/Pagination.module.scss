@@ -13,6 +13,7 @@
     height: 32px;
     width: 32px;
     padding: 5px 12px;
+    margin-right: 4px;
     color: $text;
     cursor: pointer;
     border: none;
@@ -29,7 +30,14 @@
 
 .next {
     border: none;
-    margin-left: 16px;
+    margin-left: 12px;
     padding-right: 10px;
-  }
-  
+    padding: 5px 12px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.next:hover {
+    background: $background;
+    border-radius: 12px;
+}

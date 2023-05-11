@@ -1,5 +1,9 @@
 @import '../../scss/variables';
 
+.searchWrapper {
+    position: relative;
+}
+
 .input {
     border: 1px solid rgba($color: $text, $alpha: 0.2);
     border-radius: 8px;
@@ -8,4 +12,47 @@
     width: 400px;
     color: $text;
     outline-color: rgba($color: $text, $alpha: 0.5);
+}
+
+.clearWrapper {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-60%);
+    width: 23px;
+    height: 23px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clear {
+    position: relative;
+    cursor: pointer;
+}
+
+.clear::before {
+    position: absolute;
+    display: inline-block;
+    content: '';
+    width: 2px;
+    height: 16px;
+    background: rgba($color: $subtitleGray, $alpha: 0.7);
+    transform: translateY(-50%) rotate(45deg);
+    left: -1px;
+}
+
+.clear::after {
+    position: absolute;
+    content: '';
+    width: 2px;
+    height: 16px;
+    background: rgba($color: $subtitleGray, $alpha: 0.7);
+    transform: translateY(-50%) rotate(-45deg);
+    left: -1px;
+}
+
+.clearWrapper:hover  {
+    background: rgba($color: $subtitleGray, $alpha: 0.2);
+    border-radius: 4px;
 }

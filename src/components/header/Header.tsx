@@ -17,7 +17,6 @@ const Header = () => {
                </div>
             </Link>
             <SearchPannel />
-
          </div>
          <div className={s.headerButtons}>
             <button>Вход</button>

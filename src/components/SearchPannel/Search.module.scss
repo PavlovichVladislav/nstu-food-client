@@ -24,11 +24,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .clear {
     position: relative;
-    cursor: pointer;
 }
 
 .clear::before {

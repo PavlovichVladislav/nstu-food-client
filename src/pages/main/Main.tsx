@@ -24,7 +24,6 @@ export default function Main() {
          </section>
          <div className="content__top">
             <h2 className="content__title"> Наши заведения</h2>
-            {/* <SearchPannel/> */}
          </div>
          <RestuarantsList onListLoad={onListLoad}/>
          {pages > 1 && <Paging totalPages={pages} />}

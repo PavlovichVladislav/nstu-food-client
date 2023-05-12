@@ -2,6 +2,8 @@ import clsx from "clsx";
 import React, { useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 
+import { pageQueryName } from "../../utils/constants";
+
 import styles from "./Pagination.module.scss";
 
 interface PagingProps {
@@ -9,7 +11,7 @@ interface PagingProps {
    paramQueryName?: string;
 }
 
-const Paging: React.FC<PagingProps> = ({ totalPages, paramQueryName = "page" }) => {
+const Paging: React.FC<PagingProps> = ({ totalPages, paramQueryName = pageQueryName }) => {
    const [searchParams, updateSearchParams] = useSearchParams();
 
    const currentPage = useMemo(() => {

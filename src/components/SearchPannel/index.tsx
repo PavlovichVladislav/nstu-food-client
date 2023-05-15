@@ -17,6 +17,7 @@ const SearchPannel = () => {
       dispatch(setSearchValue(""));
    };
 
+   // eslint-disable-next-line react-hooks/exhaustive-deps
    const updateGlobalSearchValue = useCallback(
       debounce((value: string) => {
          dispatch(setSearchValue(value));

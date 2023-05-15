@@ -2,6 +2,7 @@ import { IMenuItem } from "../models/menuItem";
 import { IRestuarant } from "../models/restuarant";
 
 interface getRestMenuRespone {
+   count: number;
    restuarantName: string;
    dishes: IMenuItem[];
 }
@@ -31,7 +32,14 @@ class RestuarantApi {
       return response.json();
    }
 
-   async getRestuarntMenu(id: string, sort: string, dishType: string | null, search: string): Promise<getRestMenuRespone> {
+   async getRestuarntMenu(
+      id: string,
+      sort: string,
+      dishType: string | null,
+      search: string,
+      page: number = 1,
+      limit: number = 8
+   ): Promise<getRestMenuRespone> {
       let params = "";
 
       // const sortValue = () => {
@@ -49,12 +57,12 @@ class RestuarantApi {
 
       // if (sort) params = `sortBy=${sortValue()}`;
 
-      if (dishType && dishType !=='all') params += `dishType=${dishType}`
+      if (dishType && dishType !== "all") params += `dishType=${dishType}`;
       if (search) params += `&search=${search}`;
+      page ? (params += `&page=${page}`) : (params += `&page=1`);
+      params += `&limit=${limit}`;
 
       const response = await fetch(`${this._baseApi}menu/${id}?${params}`);
-      // const items = await response.json();
-      // console.log(items);
       return response.json();
    }
 }

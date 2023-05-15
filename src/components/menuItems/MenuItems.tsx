@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 
 import RestuarantApi from "../../api/RestuarantApi";
-import { dishQueryName } from "../../utils/constants";
+import { dishQueryName, itemsInPage, pageQueryName } from "../../utils/constants";
 
 import Skeleton from "../cards/Skeleton";
 import FoodCard from "../cards/FoodCard";
@@ -12,7 +12,7 @@ import { IMenuItem } from "../../models/menuItem";
 import { useAppSelector } from "../../hooks/hooks";
 
 interface Props {
-   onLoad: (restName: string) => void;
+   onLoad: (restName: string, pages: number) => void;
 }
 
 const MenuItems: React.FC<Props> = ({ onLoad }) => {
@@ -21,7 +21,7 @@ const MenuItems: React.FC<Props> = ({ onLoad }) => {
    const [searchParams] = useSearchParams();
    const { restId } = useParams();
    const { search } = useAppSelector((state) => state.search);
-   
+   const page = searchParams.get(pageQueryName) || 1;
    const restuarantsApi = new RestuarantApi();
 
    const dishCategory = searchParams.get(dishQueryName);
@@ -29,21 +29,26 @@ const MenuItems: React.FC<Props> = ({ onLoad }) => {
 
    const getMenu = async (id: string) => {
       setIsLoading(true);
-      const { dishes, restuarantName } = await restuarantsApi.getRestuarntMenu(
+
+      const { dishes, restuarantName, count } = await restuarantsApi.getRestuarntMenu(
          id,
          sortProperty || "",
          dishCategory,
-         search
+         search,
+         +page,
+         itemsInPage
       );
+      const pagesCount = Math.ceil(count / itemsInPage);
+
       setMenu(dishes);
-      onLoad(restuarantName);
+      onLoad(restuarantName, pagesCount );
       setIsLoading(false);
    };
 
    useEffect(() => {
       if (restId) getMenu(restId);
       // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [dishCategory, sortProperty, search]);
+   }, [dishCategory, sortProperty, search, page]);
 
    if (isLoading) {
       return (

@@ -17,6 +17,7 @@ const Paging: React.FC<PagingProps> = ({ totalPages, paramQueryName = pageQueryN
    const currentPage = useMemo(() => {
       const candidate = searchParams.get(paramQueryName);
       return candidate ? Number(candidate) : 1;
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [searchParams]);
 
    const onChangePage = (value: number) => {

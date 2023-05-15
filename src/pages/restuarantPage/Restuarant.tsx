@@ -3,6 +3,7 @@ import { useState } from "react";
 import Categories from "../../components/categories/Categories";
 import Sort from "../../components/sort/Sort";
 import MenuItems from "../../components/menuItems/MenuItems";
+import Paging from "../../components/pagination";
 
 const types = [
    { label: "Все", query: "all" },
@@ -14,9 +15,11 @@ const types = [
 
 export default function Restuarant() {
    const [restName, setRestName] = useState("");
-   
-   const onLoadMenuList = (restName: string) => {
+   const [pages, setPages] = useState(1);
+
+   const onLoadMenuList = (restName: string, pages: number) => {
       setRestName(restName);
+      setPages(pages)
    };
 
    return (
@@ -29,6 +32,7 @@ export default function Restuarant() {
             <Sort />
          </div>
          <MenuItems onLoad={onLoadMenuList} />
+         {pages > 1 && <Paging totalPages={pages} />}
       </>
    );
 }

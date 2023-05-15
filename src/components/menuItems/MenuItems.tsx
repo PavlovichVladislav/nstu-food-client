@@ -9,6 +9,7 @@ import FoodCard from "../cards/FoodCard";
 import ItemsEmpty from "../itemsEmpty/ItemsEmpty";
 
 import { IMenuItem } from "../../models/menuItem";
+import { useAppSelector } from "../../hooks/hooks";
 
 interface Props {
    onLoad: (restName: string) => void;
@@ -19,7 +20,8 @@ const MenuItems: React.FC<Props> = ({ onLoad }) => {
    const [isLoading, setIsLoading] = useState(true);
    const [searchParams] = useSearchParams();
    const { restId } = useParams();
-
+   const { search } = useAppSelector((state) => state.search);
+   
    const restuarantsApi = new RestuarantApi();
 
    const dishCategory = searchParams.get(dishQueryName);
@@ -30,7 +32,8 @@ const MenuItems: React.FC<Props> = ({ onLoad }) => {
       const { dishes, restuarantName } = await restuarantsApi.getRestuarntMenu(
          id,
          sortProperty || "",
-         dishCategory
+         dishCategory,
+         search
       );
       setMenu(dishes);
       onLoad(restuarantName);
@@ -40,7 +43,7 @@ const MenuItems: React.FC<Props> = ({ onLoad }) => {
    useEffect(() => {
       if (restId) getMenu(restId);
       // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [dishCategory, sortProperty]);
+   }, [dishCategory, sortProperty, search]);
 
    if (isLoading) {
       return (

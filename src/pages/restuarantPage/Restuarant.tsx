@@ -14,7 +14,7 @@ const types = [
 
 export default function Restuarant() {
    const [restName, setRestName] = useState("");
-
+   
    const onLoadMenuList = (restName: string) => {
       setRestName(restName);
    };

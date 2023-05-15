@@ -3,27 +3,27 @@ import s from "./Categories.module.scss";
 import { useSearchParams } from "react-router-dom";
 
 interface Props {
-   categories: string[];
+   categories: { label: string; query: string }[];
    paramName: string;
 }
 
 const Categories: FC<Props> = ({ categories, paramName }) => {
    const [searchParams, setSearchParams] = useSearchParams();
 
-   const categoryName = searchParams.get(paramName) ? searchParams.get(paramName) as string : 0;
+   const categoryName = searchParams.get(paramName) ? (searchParams.get(paramName) as string) : 0;
 
    return (
       <div className={s.categories}>
          <ul>
-            {categories.map((category, i) => (
+            {categories.map(({label, query}) => (
                <li
-                  key={i}
-                  className={+categoryName === i ? `${s.active}` : ""}
+                  key={query}
+                  className={categoryName === query ? `${s.active}` : ""}
                   onClick={() => {
-                     setSearchParams({ [paramName]: `${i}` });
+                     setSearchParams({ [paramName]: `${query}` });
                   }}
                >
-                  {category}
+                  {label}
                </li>
             ))}
          </ul>

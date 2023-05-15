@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 
 import RestuarantApi from "../../api/RestuarantApi";
+import { dishQueryName } from "../../utils/constants";
 
 import Skeleton from "../cards/Skeleton";
 import FoodCard from "../cards/FoodCard";
@@ -21,14 +22,15 @@ const MenuItems: React.FC<Props> = ({ onLoad }) => {
 
    const restuarantsApi = new RestuarantApi();
 
-   const dishCategory = searchParams.get("category");
+   const dishCategory = searchParams.get(dishQueryName);
    const sortProperty = searchParams.get("sort");
 
    const getMenu = async (id: string) => {
       setIsLoading(true);
       const { dishes, restuarantName } = await restuarantsApi.getRestuarntMenu(
          id,
-         sortProperty || ""
+         sortProperty || "",
+         dishCategory
       );
       setMenu(dishes);
       onLoad(restuarantName);

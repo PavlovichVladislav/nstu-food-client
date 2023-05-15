@@ -31,7 +31,7 @@ class RestuarantApi {
       return response.json();
    }
 
-   async getRestuarntMenu(id: string, sort: string): Promise<getRestMenuRespone> {
+   async getRestuarntMenu(id: string, sort: string, dishType: string | null): Promise<getRestMenuRespone> {
       let params = "";
 
       // const sortValue = () => {
@@ -48,6 +48,8 @@ class RestuarantApi {
       // };
 
       // if (sort) params = `sortBy=${sortValue()}`;
+
+      if (dishType && dishType !=='all') params = `dishType=${dishType}`
 
       const response = await fetch(`${this._baseApi}menu/${id}?${params}`);
       // const items = await response.json();

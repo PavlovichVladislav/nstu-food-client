@@ -2,8 +2,16 @@ import s from "./Header.module.scss";
 import logo from "../../assets/icons/logo.png";
 import { Link } from "react-router-dom";
 import SearchPannel from "../SearchPannel";
+import { useAppDispatch } from "../../hooks/hooks";
+import { setRegOpen } from "../../redux/slices/authModalsSlice";
 
 const Header = () => {
+   const dispatch = useAppDispatch();
+
+   const openRegModal = () => {
+      dispatch(setRegOpen(true));
+   };
+
    return (
       <header className={s.header}>
          <div className={s.headerLeft}>
@@ -19,8 +27,8 @@ const Header = () => {
             <SearchPannel />
          </div>
          <div className={s.headerButtons}>
-            <button>Вход</button>
-            <button className={s.light}>Регистрация</button>
+            <button onClick={openRegModal} >Вход</button>
+            <button onClick={openRegModal} className={s.light}>Регистрация</button>
          </div>
       </header>
    );

@@ -19,7 +19,7 @@ export default function Restuarant() {
 
    const onLoadMenuList = (restName: string, pages: number) => {
       setRestName(restName);
-      setPages(pages)
+      setPages(pages);
    };
 
    return (

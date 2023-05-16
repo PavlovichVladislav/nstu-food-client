@@ -3,8 +3,9 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 const initialState = {
    dishCategory: 0,
    sort: {
-      name: "цене (возр.)",
-      sortProperty: "priceAscending",
+      id: 1,
+      name: "не выбрано",
+      sortProperty: "",
    },
 };
 

@@ -8,10 +8,9 @@ interface Props {
 }
 
 const Categories: FC<Props> = ({ categories, paramName }) => {
-   const [searchParams, setSearchParams] = useSearchParams();
+   const [searchParams, setSearchParams ] = useSearchParams();
 
    const categoryName = searchParams.get(paramName) ? (searchParams.get(paramName) as string) : 0;
-
    return (
       <div className={s.categories}>
          <ul>

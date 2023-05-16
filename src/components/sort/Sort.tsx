@@ -8,8 +8,9 @@ interface Props {
    // onSortClick: (valueNum: number) => void;
 }
 const sortValues: SortPropertyType[] = [
-   { name: "цене(возр.)", sortProperty: "priceAscending" },
-   { name: "цене(убыв.)", sortProperty: "priceDescending" },
+   { id: 1, name: "не выбрано", sortProperty: "" },
+   { id: 2, name: "цене(возр.)", sortProperty: "asc" },
+   { id: 3,name: "цене(убыв.)", sortProperty: "desc" },
 ];
 
 // onSortClick, sortValue
@@ -40,7 +41,7 @@ const Sort: FC<Props> = () => {
                      }
                      onClick={() => onSelectValue(sortValue)}
                   >
-                     {sortProperty.name}
+                     {sortValue.name}
                   </div>
                ))}
             </div>

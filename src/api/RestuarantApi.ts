@@ -42,22 +42,8 @@ class RestuarantApi {
    ): Promise<getRestMenuRespone> {
       let params = "";
 
-      // const sortValue = () => {
-      //    switch (sort) {
-      //       case 'rating':
-      //          return "rate";
-      //       case 'priceAscending':
-      //          return "price";
-      //       case 'priceDescending':
-      //          return "price";
-      //       default:
-      //          break;
-      //    }
-      // };
-
-      // if (sort) params = `sortBy=${sortValue()}`;
-
-      if (dishType && dishType !== "all") params += `dishType=${dishType}`;
+      if (sort) params = `sort=${sort}`;
+      if (dishType && dishType !== "all") params += `&dishType=${dishType}`;
       if (search) params += `&search=${search}`;
       page ? (params += `&page=${page}`) : (params += `&page=1`);
       params += `&limit=${limit}`;

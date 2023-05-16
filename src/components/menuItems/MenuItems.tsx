@@ -21,18 +21,18 @@ const MenuItems: React.FC<Props> = ({ onLoad }) => {
    const [searchParams] = useSearchParams();
    const { restId } = useParams();
    const { search } = useAppSelector((state) => state.search);
+   const { sortProperty } = useAppSelector((state) => state.dishes.sort);
    const page = searchParams.get(pageQueryName) || 1;
    const restuarantsApi = new RestuarantApi();
 
    const dishCategory = searchParams.get(dishQueryName);
-   const sortProperty = searchParams.get("sort");
 
    const getMenu = async (id: string) => {
       setIsLoading(true);
 
       const { dishes, restuarantName, count } = await restuarantsApi.getRestuarntMenu(
          id,
-         sortProperty || "",
+         sortProperty,
          dishCategory,
          search,
          +page,

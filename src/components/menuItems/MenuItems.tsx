@@ -28,21 +28,26 @@ const MenuItems: React.FC<Props> = ({ onLoad }) => {
    const dishCategory = searchParams.get(dishQueryName);
 
    const getMenu = async (id: string) => {
-      setIsLoading(true);
+      try {
+         setIsLoading(true);
 
-      const { dishes, restuarantName, count } = await restuarantsApi.getRestuarntMenu(
-         id,
-         sortProperty,
-         dishCategory,
-         search,
-         +page,
-         itemsInPage
-      );
-      const pagesCount = Math.ceil(count / itemsInPage);
+         const { dishes, restuarantName, count } = await restuarantsApi.getRestuarntMenu(
+            id,
+            sortProperty,
+            dishCategory,
+            search,
+            +page,
+            itemsInPage
+         );
+         setMenu(dishes);
 
-      setMenu(dishes);
-      onLoad(restuarantName, pagesCount );
-      setIsLoading(false);
+         const pagesCount = Math.ceil(count / itemsInPage);
+         onLoad(restuarantName, pagesCount);
+
+         setIsLoading(false);
+      } catch (error) {
+         console.error(error);
+      }
    };
 
    useEffect(() => {

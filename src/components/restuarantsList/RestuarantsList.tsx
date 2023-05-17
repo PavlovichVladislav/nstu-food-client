@@ -26,17 +26,25 @@ const RestuarantsList: React.FC<Props> = ({ onListLoad }) => {
 
    const restuarantsApi = new RestuarantApi();
 
-   const getRestuarants = (campus?: number) => {
-      setIsLoading(true);
+   const getRestuarants = async (campus?: number) => {
+      try {
+         setIsLoading(true);
 
-      restuarantsApi.getRestuarants(campus, +page, itemsInPage, search).then((rests) => {
-         setRestuarants(rests.rows);
-         setIsLoading(false);
+         const { count, rows: restuarants } = await restuarantsApi.getRestuarants(
+            campus,
+            +page,
+            itemsInPage,
+            search
+         );
+         setRestuarants(restuarants);
 
-         const pageCount = Math.ceil(rests.count / itemsInPage);
-
+         const pageCount = Math.ceil(count / itemsInPage);
          onListLoad(pageCount);
-      });
+
+         setIsLoading(false);
+      } catch (error) {
+         console.error(error);
+      }
    };
 
    useEffect(() => {

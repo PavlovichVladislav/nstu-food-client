@@ -1,33 +1,51 @@
-import { FC, useState } from "react";
+import { KeyboardEvent, useEffect, useRef, useState } from "react";
 import s from "./Sort.module.scss";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { SortPropertyType, setSortValue } from "../../redux/slices/sortDishesSlice";
 
-interface Props {
-   // sortValue: number;
-   // onSortClick: (valueNum: number) => void;
-}
 const sortValues: SortPropertyType[] = [
    { id: 1, name: "не выбрано", sortProperty: "" },
    { id: 2, name: "цене(возр.)", sortProperty: "asc" },
-   { id: 3,name: "цене(убыв.)", sortProperty: "desc" },
+   { id: 3, name: "цене(убыв.)", sortProperty: "desc" },
 ];
 
 // onSortClick, sortValue
 
-const Sort: FC<Props> = () => {
+const Sort = () => {
    const sortProperty = useAppSelector((state) => state.dishes.sort);
    const [isOpen, setIsOpen] = useState(false);
    const dispatch = useAppDispatch();
-   
+   const sortRef = useRef<HTMLDivElement>(null);
 
    const onSelectValue = (prop: SortPropertyType) => {
       dispatch(setSortValue(prop));
       setIsOpen((acitve) => !acitve);
    };
 
+   useEffect(() => {
+      function handleClickOutSort(e: MouseEvent) {
+         if (sortRef.current && !e.composedPath().includes(sortRef.current)) {
+            setIsOpen(false);
+         }
+      }
+
+      function handlePressEsqSort(e: globalThis.KeyboardEvent) {
+         if (e.key === 'Escape') {
+            setIsOpen(false);
+         }
+      }
+
+      document.body.addEventListener("click", handleClickOutSort);
+      document.body.addEventListener("keyup", handlePressEsqSort);
+
+      return function cleanUp() {
+         document.body.removeEventListener('click', handleClickOutSort);
+         document.body.removeEventListener('keyup', handlePressEsqSort);
+      }
+   }, []);
+
    return (
-      <div className={s.sortWrapper}>
+      <div ref={sortRef} className={s.sortWrapper}>
          <div className={s.sortLabel} onClick={() => setIsOpen((acitve) => !acitve)}>
             Сортировка по: <span>{sortProperty.name}</span>
          </div>

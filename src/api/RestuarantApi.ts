@@ -53,4 +53,4 @@ class RestuarantApi {
    }
 }
 
-export default RestuarantApi;
+export const restuarantsApi = new RestuarantApi();

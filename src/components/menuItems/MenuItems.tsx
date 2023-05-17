@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 
-import RestuarantApi from "../../api/RestuarantApi";
+import { restuarantsApi } from "../../api/RestuarantApi";
 import { dishQueryName, itemsInPage, pageQueryName } from "../../utils/constants";
 
 import Skeleton from "../cards/Skeleton";
@@ -23,7 +23,6 @@ const MenuItems: React.FC<Props> = ({ onLoad }) => {
    const { search } = useAppSelector((state) => state.search);
    const { sortProperty } = useAppSelector((state) => state.dishes.sort);
    const page = searchParams.get(pageQueryName) || 1;
-   const restuarantsApi = new RestuarantApi();
 
    const dishCategory = searchParams.get(dishQueryName);
 

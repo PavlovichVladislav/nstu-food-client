@@ -3,6 +3,7 @@ import { useState } from "react";
 import Categories from "../../components/categories/Categories";
 import Paging from "../../components/pagination";
 import RestuarantsList from "../../components/restuarantsList/RestuarantsList";
+import { useAppSelector } from "../../hooks/hooks";
 
 const categories = [{ label: "Все", query: "all" }];
 
@@ -11,11 +12,7 @@ for (let i = 1; i <= 8; i++) {
 }
 
 export default function Main() {
-   const [pages, setPages] = useState(1);
-
-   const onListLoad = (pages: number) => {
-      setPages(pages);
-   };
+   const { pageCount } = useAppSelector(state => state.restuarants);
 
    return (
       <>
@@ -25,8 +22,8 @@ export default function Main() {
          <div className="content__top">
             <h2 className="content__title"> Наши заведения</h2>
          </div>
-         <RestuarantsList onListLoad={onListLoad} />
-         {pages > 1 && <Paging totalPages={pages} />}
+         <RestuarantsList />
+         {pageCount > 1 && <Paging totalPages={pageCount} />}
       </>
    );
 }

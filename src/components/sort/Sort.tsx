@@ -1,4 +1,4 @@
-import { KeyboardEvent, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import s from "./Sort.module.scss";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { SortPropertyType, setSortValue } from "../../redux/slices/sortDishesSlice";

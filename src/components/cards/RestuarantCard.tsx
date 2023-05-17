@@ -17,7 +17,7 @@ const Card: FC<CardProps> = ({ restaurant }) => {
    return (
       <div className={s.cardWrapper}>
          <Link to={`restuarant/${id}`}>
-            <img src={`http://localhost:7000/${img}`} className={s.cardImage} alt="restaurant" />
+            <img src={`http://217.71.129.139:5508/${img}`} className={s.cardImage} alt="restaurant" />
          </Link>
 
          <h2>{name}</h2>

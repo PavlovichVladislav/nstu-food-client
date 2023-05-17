@@ -13,7 +13,7 @@ interface getRestsResponse {
 }
 
 class RestuarantApi {
-   _baseApi = "http://localhost:7000/api/";
+   _baseApi = "http://217.71.129.139:5508/api/";
 
    async getRestuarants(
       campus?: number,

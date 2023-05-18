@@ -23,6 +23,7 @@ a {
 
 body {
     background-color: $background;
+    padding: 0 calc(20px - (100vw - 100%)) 0 0;
 }
 
 h1 {

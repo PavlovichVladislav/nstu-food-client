@@ -39,9 +39,11 @@ const SearchPannel = () => {
             className={styles.input}
             placeholder="Введите название заведения..."
          />
-         <div className={styles.clearWrapper} onClick={onClear}>
-            <span className={styles.clear}></span>
-         </div>
+         {(localValue.length > 0) && (
+            <div className={styles.clearWrapper} onClick={onClear}>
+               <span className={styles.clear}></span>
+            </div>
+         )}
       </div>
    );
 };

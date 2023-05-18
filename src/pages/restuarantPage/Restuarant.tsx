@@ -5,8 +5,11 @@ import Sort from "../../components/sort/Sort";
 import MenuItems from "../../components/menuItems/MenuItems";
 import Paging from "../../components/pagination";
 
+import styles from './Restuarant.module.scss';
+import arrowBack from './../../assets/icons/arrow-back.svg';
+
 const types = [
-   { label: "Все", query: "all" },
+   { label: "Все", query: "" },
    { label: "Горячие блюда", query: "hotDishes" },
    { label: "Десерты", query: "dessert" },
    { label: "Быстрый перекус", query: "fastFood" },
@@ -28,7 +31,7 @@ export default function Restuarant() {
             <Categories categories={types} paramName="dishType" />
          </section>
          <div className="content__top">
-            <h2 className="content__title"> {restName}</h2>
+            <h2 className="content__title">{restName}</h2>
             <Sort />
          </div>
          <MenuItems onLoad={onLoadMenuList} />

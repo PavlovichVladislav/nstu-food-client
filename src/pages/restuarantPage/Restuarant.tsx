@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Categories from "../../components/categories/Categories";
 import Sort from "../../components/sort/Sort";
@@ -16,6 +16,10 @@ const types = [
 export default function Restuarant() {
    const [restName, setRestName] = useState("");
    const [pages, setPages] = useState(1);
+
+   useEffect(() => {
+      window.scrollTo(0, 0);
+   }, [])
 
    const onLoadMenuList = (restName: string, pages: number) => {
       setRestName(restName);

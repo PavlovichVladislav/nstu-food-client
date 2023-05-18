@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Categories from "../../components/categories/Categories";
 import Paging from "../../components/pagination";
@@ -12,6 +12,10 @@ for (let i = 1; i <= 8; i++) {
 
 export default function Main() {
    const [pages, setPages] = useState(1);
+
+   useEffect(() => {
+      window.scrollTo(0, 0);
+   }, [])
 
    const onListLoad = (pages: number) => {
       setPages(pages);

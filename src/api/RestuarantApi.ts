@@ -1,5 +1,6 @@
 import { IMenuItem } from "../models/menuItem";
 import { IRestuarant } from "../models/restuarant";
+import { serverUrl } from "../utils/constants";
 
 interface getRestMenuRespone {
    count: number;
@@ -13,7 +14,7 @@ interface getRestsResponse {
 }
 
 class RestuarantApi {
-   _baseApi = "http://217.71.129.139:5508/api/";
+   _baseApi = `${serverUrl}api/`;
 
    async getRestuarants(
       campus?: number,

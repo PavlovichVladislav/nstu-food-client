@@ -4,6 +4,7 @@
     ul {
         display: flex;
         gap: 12px;
+        flex-wrap: wrap;
 
         li, a {
             padding: 14px 32px;
@@ -44,11 +45,12 @@
         }
 
         @media (max-width: 1150px) {
-            // flex-wrap: wrap;
-            // justify-content: start;
-            // gap: 10px;
             width: 100%;
             overflow: scroll;
+        }
+
+        @media (max-width: 710px) {
+            justify-content: center;
         }
     }
 }

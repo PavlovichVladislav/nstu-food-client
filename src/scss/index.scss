@@ -24,6 +24,10 @@ a {
 body {
     background-color: $background;
     padding: 0 calc(20px - (100vw - 100%)) 0 0;
+
+    @media (max-width: 780px) {
+        padding: 0;
+    }
 }
 
 h1 {
@@ -43,7 +47,14 @@ h1 {
 
     @media (max-width: 710px) {
         width: calc(100vw);
-        padding-bottom: 0 32px 20px 32px;
+        padding: 0 32px 20px 32px;
+        margin: 0 auto;
+        border-radius: 0;
+    }
+
+    @media (max-width: 450px) {
+        width: calc(100vw);
+        padding: 0 16px 10px 16px;
         margin: 0 auto;
         border-radius: 0;
     }

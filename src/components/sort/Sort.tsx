@@ -1,15 +1,14 @@
-import { KeyboardEvent, useEffect, useRef, useState } from "react";
-import s from "./Sort.module.scss";
+import { useEffect, useRef, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { SortPropertyType, setSortValue } from "../../redux/slices/sortDishesSlice";
+
+import s from "./Sort.module.scss";
 
 const sortValues: SortPropertyType[] = [
    { id: 1, name: "не выбрано", sortProperty: "" },
    { id: 2, name: "цене(возр.)", sortProperty: "asc" },
    { id: 3, name: "цене(убыв.)", sortProperty: "desc" },
 ];
-
-// onSortClick, sortValue
 
 const Sort = () => {
    const sortProperty = useAppSelector((state) => state.dishes.sort);

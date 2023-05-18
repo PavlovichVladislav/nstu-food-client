@@ -5,9 +5,6 @@ import Sort from "../../components/sort/Sort";
 import MenuItems from "../../components/menuItems/MenuItems";
 import Paging from "../../components/pagination";
 
-import styles from './Restuarant.module.scss';
-import arrowBack from './../../assets/icons/arrow-back.svg';
-
 const types = [
    { label: "Все", query: "" },
    { label: "Горячие блюда", query: "hotDishes" },

@@ -19,7 +19,7 @@ const Modal: React.FC<Props> = ({ width, title, onClose, children, isOpen }: Pro
          return;
       } 
 
-      document.body.style.overflow = "scroll";
+      document.body.style.overflow = "visible";
    }, [isOpen]);
 
    return (

@@ -5,11 +5,16 @@ import { useAppDispatch } from "../../hooks/hooks";
 import { setSearchValue } from "../../redux/slices/searchSlice";
 
 import styles from "./Search.module.scss";
+import { useLocation } from "react-router-dom";
+import { mainPlaceholder, restuarantPlaceholder } from "../../utils/constants";
 
 const SearchPannel = () => {
    const [localValue, setLocalValue] = useState("");
    const inputRef = useRef<HTMLInputElement>(null);
+   const { pathname } = useLocation();
    const dispatch = useAppDispatch();
+
+   const placeholder = pathname.includes("restuarant") ? restuarantPlaceholder : mainPlaceholder;
 
    const onClear = () => {
       inputRef.current?.focus();
@@ -37,9 +42,9 @@ const SearchPannel = () => {
             value={localValue}
             onChange={onChangeInput}
             className={styles.input}
-            placeholder="Введите название заведения..."
+            placeholder={placeholder}
          />
-         {(localValue.length > 0) && (
+         {localValue.length > 0 && (
             <div className={styles.clearWrapper} onClick={onClear}>
                <span className={styles.clear}></span>
             </div>

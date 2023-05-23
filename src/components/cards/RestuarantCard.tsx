@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 import { IRestuarant } from "../../models/restuarant";
+import { serverUrl } from "../../utils/constants";
 
 import s from "./Card.module.scss";
 import rateImg from "../../assets/icons/rate.svg";
@@ -17,7 +18,7 @@ const Card: FC<CardProps> = ({ restaurant }) => {
    return (
       <div className={s.cardWrapper}>
          <Link to={`restuarant/${id}`}>
-            <img src={`http://localhost:7000/${img}`} className={s.cardImage} alt="restaurant" />
+            <img src={`${serverUrl}${img}`} className={s.cardImage} alt="restaurant" />
          </Link>
 
          <h2>{name}</h2>

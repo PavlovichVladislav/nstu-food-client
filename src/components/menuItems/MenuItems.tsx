@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 
 import { restuarantsApi } from "../../api/RestuarantApi";
-import { dishQueryName, itemsInPage, pageQueryName } from "../../utils/constants";
+import { dishQueryName, itemsInPage, pageQueryName, skeletonsCount } from "../../utils/constants";
 
 import Skeleton from "../cards/Skeleton";
 import FoodCard from "../cards/FoodCard";
@@ -57,7 +57,7 @@ const MenuItems: React.FC<Props> = ({ onLoad }) => {
    if (isLoading) {
       return (
          <div className="content__items">
-            {[...new Array(8)].map((_, i) => (
+            {[...new Array(skeletonsCount)].map((_, i) => (
                <Skeleton key={i} />
             ))}
          </div>

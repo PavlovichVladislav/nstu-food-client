@@ -13,6 +13,15 @@ interface Props {
 }
 
 const Modal: React.FC<Props> = ({ width, title, onClose, children, isOpen }: Props) => {
+   React.useEffect(() => {
+      if (isOpen) {
+         document.body.style.overflow = "hidden";
+         return;
+      } 
+
+      document.body.style.overflow = "visible";
+   }, [isOpen]);
+
    return (
       <div className={clsx(styles.modal, { [styles.modalActive]: isOpen })}>
          <div className={styles.background} onClick={onClose}></div>

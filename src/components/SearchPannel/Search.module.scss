@@ -12,6 +12,28 @@
     width: 400px;
     color: $text;
     outline-color: rgba($color: $text, $alpha: 0.5);
+
+    @media (max-width: 1355px) {
+        height: 43px;
+        width: 350px;
+    }
+
+    @media (max-width: 1150px) {
+        height: 40px;
+        width: 350px;
+    }
+
+    @media (max-width: 800px) {
+        width: calc(100vw - 236px);
+    }
+
+    @media (max-width: 710px) {
+        width: calc(100vw - 136px);
+    }
+
+    @media (max-width: 500px) {
+        width: calc(100vw - 64px);
+    }
 }
 
 .clearWrapper {
@@ -52,7 +74,7 @@
     left: -1px;
 }
 
-.clearWrapper:hover  {
+.clearWrapper:hover {
     background: rgba($color: $subtitleGray, $alpha: 0.2);
     border-radius: 4px;
 }

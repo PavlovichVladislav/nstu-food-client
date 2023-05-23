@@ -23,6 +23,11 @@ a {
 
 body {
     background-color: $background;
+    padding: 0 calc(20px - (100vw - 100%)) 0 0;
+
+    @media (max-width: 780px) {
+        padding: 0;
+    }
 }
 
 h1 {
@@ -39,10 +44,18 @@ h1 {
     background-color: $white;
     margin: 50px auto;
     border-radius: 10px;
-
+    
     @media (max-width: 710px) {
+        width: 100vw;
+        min-height: 100vh;
+        padding: 0 32px 20px 32px;
+        margin: 0 auto;
+        border-radius: 0;
+    }
+
+    @media (max-width: 450px) {
         width: calc(100vw);
-        padding-bottom: 0 32px 20px 32px;
+        padding: 0 16px 10px 16px;
         margin: 0 auto;
         border-radius: 0;
     }
@@ -87,7 +100,8 @@ h1 {
         display: grid;
         justify-items: center;
         gap: 45px 35px;
-        grid-template: repeat(1, 1fr) / repeat(4, 1fr);
+        grid-template: repeat(1, auto) / repeat(4, 1fr);
+        align-items: start;
 
         @media (max-width: 1440px) {
             grid-template-columns: repeat(3, 1fr);

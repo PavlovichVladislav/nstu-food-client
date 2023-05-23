@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { campusQueryName, itemsInPage, pageQueryName } from "../../utils/constants";
+import { campusQueryName, itemsInPage, pageQueryName, skeletonsCount } from "../../utils/constants";
 
 import Skeleton from "../cards/Skeleton";
 import Card from "../cards/RestuarantCard";
@@ -33,7 +33,7 @@ const RestuarantsList = () => {
    if (loading === "loading") {
       return (
          <div className="content__items">
-            {[...new Array(8)].map((_, i) => (
+            {[...new Array(skeletonsCount)].map((_, i) => (
                <Skeleton key={i} />
             ))}
          </div>

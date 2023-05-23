@@ -1,15 +1,14 @@
-import { KeyboardEvent, useEffect, useRef, useState } from "react";
-import s from "./Sort.module.scss";
+import { useEffect, useRef, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { SortPropertyType, setSortValue } from "../../redux/slices/sortDishesSlice";
+
+import s from "./Sort.module.scss";
 
 const sortValues: SortPropertyType[] = [
    { id: 1, name: "не выбрано", sortProperty: "" },
    { id: 2, name: "цене(возр.)", sortProperty: "asc" },
    { id: 3, name: "цене(убыв.)", sortProperty: "desc" },
 ];
-
-// onSortClick, sortValue
 
 const Sort = () => {
    const sortProperty = useAppSelector((state) => state.dishes.sort);
@@ -30,7 +29,7 @@ const Sort = () => {
       }
 
       function handlePressEsqSort(e: globalThis.KeyboardEvent) {
-         if (e.key === 'Escape') {
+         if (e.key === "Escape") {
             setIsOpen(false);
          }
       }
@@ -39,14 +38,23 @@ const Sort = () => {
       document.body.addEventListener("keyup", handlePressEsqSort);
 
       return function cleanUp() {
-         document.body.removeEventListener('click', handleClickOutSort);
-         document.body.removeEventListener('keyup', handlePressEsqSort);
-      }
+         document.body.removeEventListener("click", handleClickOutSort);
+         document.body.removeEventListener("keyup", handlePressEsqSort);
+      };
    }, []);
 
    return (
       <div ref={sortRef} className={s.sortWrapper}>
-         <div className={s.sortLabel} onClick={() => setIsOpen((acitve) => !acitve)}>
+         <div
+            className={s.sortLabel}
+            onClick={() => setIsOpen((acitve) => !acitve)}
+            tabIndex={0}
+            onKeyUp={(e) => {
+               if (e.key === "Enter") {
+                  setIsOpen((acitve) => !acitve);
+               }
+            }}
+         >
             Сортировка по: <span>{sortProperty.name}</span>
          </div>
          {isOpen && (
@@ -57,7 +65,13 @@ const Sort = () => {
                      className={
                         sortValue.sortProperty === sortProperty.sortProperty ? `${s.active}` : ""
                      }
+                     tabIndex={0}
                      onClick={() => onSelectValue(sortValue)}
+                     onKeyUp={(e) => {
+                        if (e.key === "Enter") {
+                           onSelectValue(sortValue);
+                        }
+                     }}
                   >
                      {sortValue.name}
                   </div>

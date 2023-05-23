@@ -11,6 +11,10 @@
    height: 100%;
    overflow: hidden;
    z-index: 1000;
+
+   @media (max-width: 480px) {
+      padding: 10px;
+  }
 }
 
 .modalActive {
@@ -35,6 +39,10 @@
    border-radius: calc($--m * 2);
    box-shadow: 2px 2px calc($--m * 1) rgb(0 0 0 / 10%);
    z-index: 1;
+
+   @media (max-width: 480px) {
+      padding: calc($--m * 3) calc($--m * 4);
+  }
 }
 
 .title {

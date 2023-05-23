@@ -4,6 +4,7 @@ import searchReducer from './slices/searchSlice';
 import sortDishesReducer from './slices/sortDishesSlice';
 import authModalsReducer from './slices/authModalsSlice';
 import restuarantReducer from './slices/restuarantSlice';
+import menuReducer from './slices/menuSlice';
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     dishes: sortDishesReducer,
     authModals: authModalsReducer,
     restuarants: restuarantReducer,
+    menu: menuReducer,
   },
 })
 

@@ -1,22 +1,22 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { campusQueryName, itemsInPage, pageQueryName, skeletonsCount } from "../../utils/constants";
 
+import { fetchRestuarants } from "../../redux/slices/restuarantSlice";
+
 import Skeleton from "../cards/Skeleton";
 import Card from "../cards/RestuarantCard";
 import RestuarantsListEmpty from "../restuarantsListEmpty/RestuarantsListEmpty";
 
-import { fetchRestuarants } from "../../redux/slices/restuarantSlice";
 
 const RestuarantsList = () => {
+   const dispatch = useAppDispatch();
    const [searchParams] = useSearchParams();
 
    const { restuarants, loading } = useAppSelector((state) => state.restuarants);
    const { search } = useAppSelector((state) => state.search);
-
-   const dispatch = useAppDispatch();
 
    const page = searchParams.get(pageQueryName) || 1;
    const campus = searchParams.get(campusQueryName);

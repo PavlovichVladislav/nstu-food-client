@@ -8,7 +8,7 @@ import styles from './ModalAuth.module.scss';
 const ModalAuth = () => {
    const { isAuthOpen } = useAppSelector((state) => state.authModals);
    const dispatch = useAppDispatch();
-
+   
    return (
       <Modal
          width={450}

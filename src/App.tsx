@@ -1,10 +1,11 @@
 import Header from "./components/header/Header";
+import { Outlet } from "react-router-dom";
+
+import ModalRegistration from "./components/modalRegistration/ModalRegistration";
+import ModalAuth from "./components/modalAuth/ModalAuth";
 
 import "normalize.css";
 import "./scss/index.scss";
-import { Outlet } from "react-router-dom";
-import ModalRegistration from "./components/modalRegistration/ModalRegistration";
-import ModalAuth from "./components/modalAuth/ModalAuth";
 
 function App() {
    return (

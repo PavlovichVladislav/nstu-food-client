@@ -54,8 +54,8 @@ export const restuarantSlice = createSlice({
          .addCase(fetchRestuarants.fulfilled, (state, action) => {
             const totalPages = Math.ceil(action.payload.count / itemsInPage);
 
-            state.restuarants = action.payload.restuarants;
             state.pageCount = totalPages;
+            state.restuarants = action.payload.restuarants;
             state.loading = "idle";
          })
          .addCase(fetchRestuarants.rejected, (state) => {

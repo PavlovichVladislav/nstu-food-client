@@ -14,10 +14,19 @@ interface Props {
 
 const Modal: React.FC<Props> = ({ width, title, onClose, children, isOpen }: Props) => {
    React.useEffect(() => {
+      const handleEscPress = (e: KeyboardEvent) => {
+         console.log('event');
+         if (e.key === "Escape") onClose();
+      };
+
+      window.addEventListener("keyup", handleEscPress);
+   }, []);
+
+   React.useEffect(() => {
       if (isOpen) {
          document.body.style.overflow = "hidden";
          return;
-      } 
+      }
 
       document.body.style.overflow = "visible";
    }, [isOpen]);

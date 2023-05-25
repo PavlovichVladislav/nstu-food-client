@@ -50,6 +50,7 @@ export const restuarantSlice = createSlice({
       builder
          .addCase(fetchRestuarants.pending, (state) => {
             state.loading = "loading";
+            state.pageCount = 1;
          })
          .addCase(fetchRestuarants.fulfilled, (state, action) => {
             const totalPages = Math.ceil(action.payload.count / itemsInPage);

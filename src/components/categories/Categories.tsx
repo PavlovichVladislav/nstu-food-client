@@ -13,6 +13,7 @@ const Categories: FC<Props> = ({ categories, paramName }) => {
    const { pathname } = useLocation();
 
    const categoryName = searchParams.get(paramName) ? (searchParams.get(paramName) as string) : "";
+   
    return (
       <div className={s.categories}>
          <ul>

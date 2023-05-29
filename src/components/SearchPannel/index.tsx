@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useState } from "react";
+import React, { useRef, useCallback, useState, useEffect } from "react";
 import debounce from "lodash.debounce";
 
 import { useAppDispatch } from "../../hooks/hooks";
@@ -15,7 +15,7 @@ const SearchPannel = () => {
    const dispatch = useAppDispatch();
 
    const placeholder = pathname.includes("restuarant") ? restuarantPlaceholder : mainPlaceholder;
-
+   
    const onClear = () => {
       inputRef.current?.focus();
       setLocalValue("");
@@ -34,6 +34,11 @@ const SearchPannel = () => {
       setLocalValue(e.target.value);
       updateGlobalSearchValue(e.target.value);
    };
+
+   useEffect(() => {
+      dispatch(setSearchValue(""));
+      setLocalValue("");
+   }, [pathname])
 
    return (
       <div className={styles.searchWrapper}>

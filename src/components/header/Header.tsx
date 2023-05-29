@@ -16,7 +16,7 @@ const Header = () => {
    const openAuthModal = () => {
       dispatch(setAuthOpen(true));
    }
-
+   
    return (
       <header className={s.header}>
          <div className={s.headerLeft}>

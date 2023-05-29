@@ -1,23 +1,30 @@
-import App from "../App";
+import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
-import ErrorPage from "../pages/errorPage/ErrorPage";
+
+import App from "../App";
 import Main from "../pages/main/Main";
 import Restuarant from "../pages/restuarantPage/Restuarant";
 
+const ErrorPage = lazy(() => import("../pages/errorPage/ErrorPage"));
+
 export const Router = createBrowserRouter([
-    {
-       path: "/",
-       element: <App />,
-       errorElement: <ErrorPage />,
-       children: [
-          {
-             path: "/",
-             element: <Main />,
-          },
-          {
-             path: "/restuarant/:restId",
-             element: <Restuarant />,
-          },
-       ],
-    },
- ]);
+   {
+      path: "/",
+      element: <App />,
+      errorElement: (
+         <Suspense fallback={<div>Загрузка...</div>}>
+            <ErrorPage />
+         </Suspense>
+      ),
+      children: [
+         {
+            path: "/",
+            element: <Main />,
+         },
+         {
+            path: "/restuarant/:restId",
+            element: <Restuarant />,
+         },
+      ],
+   },
+]);

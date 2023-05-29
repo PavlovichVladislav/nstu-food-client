@@ -31,7 +31,7 @@ const MenuItems: React.FC = () => {
       if (restId) getMenu(restId);
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [dishType, sort, search, page]);
-
+   
    if (loading === "loading") {
       return (
          <div className="content__items">

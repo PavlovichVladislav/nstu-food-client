@@ -15,7 +15,6 @@ interface Props {
 const Modal: React.FC<Props> = ({ width, title, onClose, children, isOpen }: Props) => {
    React.useEffect(() => {
       const handleEscPress = (e: KeyboardEvent) => {
-         console.log('event');
          if (e.key === "Escape") onClose();
       };
 

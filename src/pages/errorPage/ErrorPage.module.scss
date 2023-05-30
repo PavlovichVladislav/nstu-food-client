@@ -1,14 +1,26 @@
 @import url('../../scss/_variables.scss');
 
 .errorPage {
-    height: 100vh;
+    grid-area: 4 / auto / 5 / auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 40px;
 
-    i {
-        color: #7B7B7B;
+    h2 {
+        font-size: 28px;
+        color: #015F45;
     }
+}
+
+.descr {
+    margin-top: 16px;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    color: #2c2c2c;
+}
+
+.link {
+    margin-top: 16px;
 }

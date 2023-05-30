@@ -11,11 +11,6 @@ export const Router = createBrowserRouter([
    {
       path: "/",
       element: <App />,
-      errorElement: (
-         <Suspense fallback={<div>Загрузка...</div>}>
-            <ErrorPage />
-         </Suspense>
-      ),
       children: [
          {
             path: "/",
@@ -24,6 +19,14 @@ export const Router = createBrowserRouter([
          {
             path: "/restuarant/:restId",
             element: <Restuarant />,
+         },
+         {
+            path: "*",
+            element: (
+               <Suspense fallback={<div>Загрузка...</div>}>
+                  <ErrorPage />
+               </Suspense>
+            ),
          },
       ],
    },

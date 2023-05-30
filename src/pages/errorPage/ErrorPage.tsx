@@ -1,5 +1,6 @@
-import { useRouteError } from "react-router-dom";
-import styles from './ErrorPage.module.scss';
+import { Link, useRouteError } from "react-router-dom";
+import styles from "./ErrorPage.module.scss";
+import AppLink from "../../components/AppLink/AppLink";
 
 export default function ErrorPage() {
    const error: any = useRouteError();
@@ -7,11 +8,14 @@ export default function ErrorPage() {
 
    return (
       <div className={styles.errorPage}>
-         <h1>Oops!</h1>
-         <p>Sorry, an unexpected error has occurred.</p>
-         <p>
-            <i>{error.statusText || error.message}</i>
+         <h2>Ошибка: 404</h2>
+         <p className={styles.descr}>
+            Извините, страница по указанному адресу не была найдена. <br />
+            Возможно данная страница была удалена или изменила адрес.
          </p>
+         <AppLink className={styles.link} to="/">
+            Вернуться на главную
+         </AppLink>
       </div>
    );
 }

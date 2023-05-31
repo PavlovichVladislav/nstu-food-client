@@ -29,24 +29,6 @@
       }
    }
 
-   &Link {
-      margin-top: 13px;
-      padding: 12px 0;
-      width: 276px;
-      height: 40px;
-      display: block;
-      background: $green;
-      border: 1px solid $greenHover;
-      border-radius: 30px;
-      font-weight: 700;
-      font-size: 14px;
-      line-height: 16px;
-      color: $text;
-      text-align: center;
-      text-decoration: none;
-      cursor: pointer;
-   }
-
    &Image {
       display: block;
       margin: 0 auto;

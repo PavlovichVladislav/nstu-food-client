@@ -1,8 +1,10 @@
 import { FC } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { IRestuarant } from "../../models/restuarant";
 import { serverUrl } from "../../utils/constants";
+
+import AppLink from "../appLink/AppLink";
 
 import s from "./Card.module.scss";
 import rateImg from "../../assets/icons/rate.svg";
@@ -34,9 +36,7 @@ const Card: FC<CardProps> = ({ restaurant }) => {
                </div>
             </div>
          </div>
-         <NavLink className={s.cardLink} to={`restuarant/${id}`}>
-            {schedule}
-         </NavLink>
+         <AppLink to={`restuarant/${id}`}>{schedule}</AppLink>
       </div>
    );
 };

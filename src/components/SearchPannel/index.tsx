@@ -15,7 +15,9 @@ const SearchPannel = () => {
    const dispatch = useAppDispatch();
 
    const placeholder = pathname.includes("restuarant") ? restuarantPlaceholder : mainPlaceholder;
-   
+
+   const visible = pathname.includes("restuarant") || pathname === "/";
+
    const onClear = () => {
       inputRef.current?.focus();
       setLocalValue("");
@@ -38,7 +40,9 @@ const SearchPannel = () => {
    useEffect(() => {
       dispatch(setSearchValue(""));
       setLocalValue("");
-   }, [pathname])
+   }, [pathname]);
+
+   if (!visible) return null;
 
    return (
       <div className={styles.searchWrapper}>

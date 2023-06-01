@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import Categories from "../../components/categories/Categories";
 import Sort from "../../components/sort/Sort";
@@ -16,10 +16,13 @@ const types = [
 
 export default function Restuarant() {
    const { restuarantName, pageCount } = useAppSelector((state) => state.menu);
+   const { search } = useAppSelector((state) => state.search);
+   const [isInit, setIsInit] = useState(true);
 
    useEffect(() => {
       window.scrollTo(0, 0);
-   }, [])
+      setIsInit(false);
+   }, []);
 
    return (
       <>
@@ -30,7 +33,7 @@ export default function Restuarant() {
             <h2 className="content__title">{restuarantName}</h2>
             <Sort />
          </div>
-         <MenuItems />
+         <MenuItems searchValue={isInit ? "" : search} />
          {pageCount > 1 && <Paging totalPages={pageCount} />}
       </>
    );

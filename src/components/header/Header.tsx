@@ -17,6 +17,7 @@ const Header = () => {
       dispatch(setAuthOpen(true));
    }
    
+   console.log('header render');
    return (
       <header className={s.header}>
          <div className={s.headerLeft}>

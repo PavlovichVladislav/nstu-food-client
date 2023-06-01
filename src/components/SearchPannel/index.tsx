@@ -1,12 +1,13 @@
 import React, { useRef, useCallback, useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import debounce from "lodash.debounce";
+
+import { mainPlaceholder, restuarantPlaceholder } from "../../utils/constants";
 
 import { useAppDispatch } from "../../hooks/hooks";
 import { setSearchValue } from "../../redux/slices/searchSlice";
 
 import styles from "./Search.module.scss";
-import { useLocation } from "react-router-dom";
-import { mainPlaceholder, restuarantPlaceholder } from "../../utils/constants";
 
 const SearchPannel = () => {
    const [localValue, setLocalValue] = useState("");
@@ -15,7 +16,6 @@ const SearchPannel = () => {
    const dispatch = useAppDispatch();
 
    const placeholder = pathname.includes("restuarant") ? restuarantPlaceholder : mainPlaceholder;
-
    const visible = pathname.includes("restuarant") || pathname === "/";
 
    const onClear = () => {
@@ -34,7 +34,7 @@ const SearchPannel = () => {
 
    const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
       setLocalValue(e.target.value);
-      updateGlobalSearchValue(e.target.value);
+      updateGlobalSearchValue(e.target.value.trim());
    };
 
    useEffect(() => {

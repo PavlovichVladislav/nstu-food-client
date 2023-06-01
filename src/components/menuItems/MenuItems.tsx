@@ -11,12 +11,15 @@ import ItemsEmpty from "../itemsEmpty/ItemsEmpty";
 
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 
-const MenuItems: React.FC = () => {
+interface Props {
+   searchValue: string;
+}
+
+const MenuItems: React.FC<Props> = ({ searchValue }) => {
    const dispatch = useAppDispatch();
    const [ searchParams ] = useSearchParams();
    const { restId } = useParams();
 
-   const { search } = useAppSelector((state) => state.search);
    const { sortProperty: sort } = useAppSelector((state) => state.dishes.sort);
    const { loading, menuItems } = useAppSelector((state) => state.menu);
 
@@ -24,13 +27,13 @@ const MenuItems: React.FC = () => {
    const dishType = searchParams.get(dishQueryName);
    
    const getMenu = async (id: string) => {
-      dispatch(fetchMenu({ id, dishType, search, sort, page: +page }));
+      dispatch(fetchMenu({ id, dishType, search: searchValue, sort, page: +page }));
    };
 
    useEffect(() => {
       if (restId) getMenu(restId);
       // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [dishType, sort, search, page]);
+   }, [dishType, sort, searchValue, page]);
    
    if (loading === "loading") {
       return (

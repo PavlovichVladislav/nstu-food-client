@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkcrispy_campus_client=self.webpackChunkcrispy_campus_client||[]).push([[770],{770:function(r,e,s){s.r(e),s.d(e,{default:function(){return i}});var c=s(689),n={errorPage:"ErrorPage_errorPage__ipCLM"},a=s(184);function i(){var r=(0,c.lk)();return console.error(r),(0,a.jsxs)("div",{className:n.errorPage,children:[(0,a.jsx)("h1",{children:"Oops!"}),(0,a.jsx)("p",{children:"Sorry, an unexpected error has occurred."}),(0,a.jsx)("p",{children:(0,a.jsx)("i",{children:r.statusText||r.message})})]})}}}]);
-//# sourceMappingURL=770.8bc3350e.chunk.js.map

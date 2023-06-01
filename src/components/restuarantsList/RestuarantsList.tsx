@@ -10,25 +10,34 @@ import Skeleton from "../cards/Skeleton";
 import Card from "../cards/RestuarantCard";
 import RestuarantsListEmpty from "../restuarantsListEmpty/RestuarantsListEmpty";
 
+interface Props {
+   searchValue: string;
+}
 
-const RestuarantsList = () => {
+const RestuarantsList: React.FC<Props> = ({ searchValue }) => {
    const dispatch = useAppDispatch();
    const [searchParams] = useSearchParams();
 
    const { restuarants, loading } = useAppSelector((state) => state.restuarants);
-   const { search } = useAppSelector((state) => state.search);
-
+   
    const page = searchParams.get(pageQueryName) || 1;
    const campus = searchParams.get(campusQueryName);
 
    const getRestuarants = async (campus?: number) => {
-      dispatch(fetchRestuarants({ campus, page: +page, limit: itemsInPage, searchValue: search }));
+      dispatch(
+         fetchRestuarants({
+            campus,
+            page: +page,
+            limit: itemsInPage,
+            searchValue,
+         })
+      );
    };
 
    useEffect(() => {
       getRestuarants(campus ? +campus : undefined);
       // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [campus, page, search]);
+   }, [campus, page, searchValue]);
 
    if (loading === "loading") {
       return (
@@ -44,8 +53,8 @@ const RestuarantsList = () => {
       return <RestuarantsListEmpty />;
    }
 
-   if (loading === 'error') {
-      return <div>Ошибка...</div>
+   if (loading === "error") {
+      return <div>Ошибка...</div>;
    }
 
    return (

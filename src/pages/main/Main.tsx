@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Categories from "../../components/categories/Categories";
 import Paging from "../../components/pagination";
 import RestuarantsList from "../../components/restuarantsList/RestuarantsList";
@@ -11,7 +12,13 @@ for (let i = 1; i <= 8; i++) {
 
 export default function Main() {
    const { pageCount } = useAppSelector(state => state.restuarants);
-   
+   const { search } = useAppSelector((state) => state.search);
+   const [isInit, setIsInit] = useState(true);
+
+   useEffect(() => {
+      setIsInit(false);
+   }, [])
+
    return (
       <>
          <section className="content__categories">
@@ -20,7 +27,7 @@ export default function Main() {
          <div className="content__top">
             <h2 className="content__title"> Наши заведения</h2>
          </div>
-         <RestuarantsList />
+         <RestuarantsList searchValue={isInit ? '' : search} />
          {pageCount > 1 && <Paging totalPages={pageCount} />}
       </>
    );

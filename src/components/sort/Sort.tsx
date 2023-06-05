@@ -5,7 +5,7 @@ import { SortPropertyType, setSortValue } from "../../redux/slices/sortDishesSli
 import s from "./Sort.module.scss";
 
 const sortValues: SortPropertyType[] = [
-   { id: 1, name: "не выбрано", sortProperty: "" },
+   { id: 1, name: "новизне", sortProperty: "" },
    { id: 2, name: "цене(возр.)", sortProperty: "asc" },
    { id: 3, name: "цене(убыв.)", sortProperty: "desc" },
 ];

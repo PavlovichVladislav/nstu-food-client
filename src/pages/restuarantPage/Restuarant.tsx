@@ -8,6 +8,7 @@ import { useAppSelector } from "../../hooks/hooks";
 
 const types = [
    { label: "Все", query: "" },
+   { label: "Салаты", query: "salad" },
    { label: "Горячие блюда", query: "hotDishes" },
    { label: "Десерты", query: "dessert" },
    { label: "Быстрый перекус", query: "fastFood" },

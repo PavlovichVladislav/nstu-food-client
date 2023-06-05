@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Link, useLocation, useSearchParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
 import s from "./Categories.module.scss";
 
@@ -11,13 +11,18 @@ interface Props {
 const Categories: FC<Props> = ({ categories, paramName }) => {
    const [searchParams, setSearchParams] = useSearchParams();
    const { pathname } = useLocation();
+   const navigate = useNavigate();
 
    const categoryName = searchParams.get(paramName) ? (searchParams.get(paramName) as string) : "";
-   
+
+   const onPrevPageClick = () => {
+      navigate(-1);
+   };
+
    return (
       <div className={s.categories}>
          <ul>
-            {pathname !== "/" && <Link to={'/'}>На главную</Link>}
+            {pathname !== "/" && <li onClick={onPrevPageClick}>На главную</li>}
             {categories.map(({ label, query }) => (
                <li
                   key={query}

@@ -20,11 +20,15 @@
     background: none;
 }
 
-.active,
 .link:hover,
 .link:focus {
     border-radius: 50%;
     background-color: $background;
+}
+
+.active {
+    border-radius: 50%;
+    background-color: rgba($color: $text, $alpha: 0.25);
 }
 
 .next {
